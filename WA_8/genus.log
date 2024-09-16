@@ -1,0 +1,2876 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2022 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[10:24:51.496489] Configured Lic search path (21.01-s002): 5280@10.10.12.55
+
+Version: 21.14-s082_1, built Thu Jun 23 02:02:08 PDT 2022
+Options: 
+Date:    Tue Sep 03 10:24:51 2024
+Host:    vlsilab01.nitdelhi.ac.in (x86_64 w/Linux 3.10.0-1160.el7.x86_64) (12cores*20cpus*1physical cpu*12th Gen Intel(R) Core(TM) i7-12700 25600KB) (15930380KB)
+PID:     20890
+OS:      Red Hat Enterprise Linux Server release 7.9 (Maipo)
+
+
+[10:24:51.136712] Periodic Lic check successful
+[10:24:51.136720] Feature usage summary:
+[10:24:51.136720] Genus_Synthesis
+Checking out license: Genus_Synthesis
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Loading tool scripts...
+Finished loading tool scripts (4 seconds elapsed).
+
+WARNING: This version of the tool is 802 days old.
+@genus:root: 1> source exic1.tcl
+Sourcing './exic1.tcl' (Tue Sep 03 10:24:59 IST 2024)...
+#@ Begin verbose source ./exic1.tcl
+@file(exic1.tcl) 6: set x 90nm
+@file(exic1.tcl) 7: set y 8
+@file(exic1.tcl) 8: set z WA_8
+@file(exic1.tcl) 9: 			set_db init_lib_search_path /home/install/FOUNDRY/digital/$x/dig/lib/
+  Setting attribute of root '/': 'init_lib_search_path' = /home/install/FOUNDRY/digital/90nm/dig/lib/
+@file(exic1.tcl) 10: 			set_db library slow.lib
+
+Threads Configured:3
+
+  Message Summary for Library slow.lib:
+  *************************************
+  Missing a function attribute in the output pin definition. [LBR-518]: 1
+  Missing library level attribute. [LBR-516]: 1
+  *************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 0.900000, 125.000000) in library 'slow.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+  Setting attribute of root '/': 'library' = slow.lib
+@file(exic1.tcl) 11: 			set_db init_lib_search_path /home/install/FOUNDRY/digital/$x/dig/lib/
+Warning : Cannot modify library search path after reading library(s). [TUI-83]
+        : Cannot modify 'init_lib_search_path' attribute to '/home/install/FOUNDRY/digital/90nm/dig/lib/'
+        : You must set the 'init_lib_search_path' attribute before you set the 'library' attribute.
+  Setting attribute of root '/': 'init_lib_search_path' = /home/install/FOUNDRY/digital/90nm/dig/lib/
+@file(exic1.tcl) 12: 			set_db library slow.lib
+Freeing libraries in memory (slow.lib)
+
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 0.900000, 125.000000) in library 'slow.lib'.
+  Setting attribute of root '/': 'library' = slow.lib
+@file(exic1.tcl) 13: 			
+@file(exic1.tcl) 14: 			read_hdl $z.v
+@file(exic1.tcl) 16: 			elaborate $z
+  Library has 324 usable logic and 128 usable sequential lib-cells.
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'WA_8' from file 'WA_8.v'.
+Info    : Done Elaborating Design. [ELAB-3]
+        : Done elaborating 'WA_8'.
+Checking for analog nets...
+Check completed for analog nets.
+Checking for source RTL...
+Check completed for source RTL.
+Running Unified Mux Engine Tricks...
+Completed Unified Mux Engine Tricks
+
+Stage: post_elab
+--------------------------------------------------------
+| Trick             | Accepts | Rejects | Runtime (ms) | 
+--------------------------------------------------------
+| ume_constant_bmux |       0 |       0 |         0.00 | 
+--------------------------------------------------------
+Starting clip mux common data inputs [v1.0] (stage: post_elab, startdef: WA_8, recur: true)
+Completed clip mux common data inputs (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting clip the non-user hierarchies [v2.0] (stage: post_elab, startdef: WA_8, recur: true)
+Completed clip the non-user hierarchies (accepts: 0, rejects: 0, runtime: 0.000s)
+
+Stage: post_elab
+---------------------------------------------------------
+| Transform          | Accepts | Rejects | Runtime (ms) | 
+---------------------------------------------------------
+| hlo_clip_mux_input |       0 |       0 |         0.00 | 
+| hlo_clip           |       0 |       0 |         0.00 | 
+---------------------------------------------------------
+UM:   flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+@file(exic1.tcl) 18: 			set_input_delay -max 0.8 [all_inputs]
+@file(exic1.tcl) 19: 			set_output_delay -max 0.8 [all_output]
+@file(exic1.tcl) 20: 			set_input_transition 0.12 [all_inputs]
+@file(exic1.tcl) 21: 			set_load 0.15 [all_outputs]
+@file(exic1.tcl) 22: 			set_max_fanout 20.00 [current_design]
+@file(exic1.tcl) 23: 			syn_generic
+
+Stage: pre_early_cg
+------------------------------------------------
+| Transform | Accepts | Rejects | Runtime (ms) | 
+------------------------------------------------
+------------------------------------------------
+##Generic Timing Info for library domain: _default_ typical gate delay: 127.0 ps std_slew: 15.5 ps std_load: 7.0 fF
+Starting mux data reorder optimization [v1.0] (stage: pre_to_gen_setup, startdef: WA_8, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+
+Stage: pre_to_gen_setup
+------------------------------------------------------
+| Transform       | Accepts | Rejects | Runtime (ms) | 
+------------------------------------------------------
+| hlo_mux_reorder |       0 |       0 |         0.00 | 
+------------------------------------------------------
+Info    : Synthesizing. [SYNTH-1]
+        : Synthesizing 'WA_8' to generic gates using 'medium' effort.
+PBS_Generic-Start - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_Generic-Start' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:07) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:00 (Sep03) |  323.9 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+TNS Restructuring config: no_value at stage: generic applied.
+Info    : Partition Based Synthesis execution skipped. [PHYS-752]
+        : Design size is less than the partition size '100000' for distributed generic optimization to kick in.
+Starting mux data reorder optimization [v1.0] (stage: pre_to_gen_setup, startdef: WA_8, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+
+Stage: pre_to_gen_setup
+------------------------------------------------------
+| Transform       | Accepts | Rejects | Runtime (ms) | 
+------------------------------------------------------
+| hlo_mux_reorder |       0 |       0 |         0.00 | 
+------------------------------------------------------
+Starting mux data reorder optimization [v1.0] (stage: post_to_gen_setup, startdef: WA_8, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+
+Stage: post_to_gen_setup
+------------------------------------------------------
+| Transform       | Accepts | Rejects | Runtime (ms) | 
+------------------------------------------------------
+| hlo_mux_reorder |       0 |       0 |         0.00 | 
+------------------------------------------------------
+Running Unified Mux Engine Tricks...
+Completed Unified Mux Engine Tricks
+
+Stage: pre_hlo_rtlopt
+--------------------------------------------
+| Trick | Accepts | Rejects | Runtime (ms) | 
+--------------------------------------------
+--------------------------------------------
+Starting infer macro optimization [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed infer macro optimization (accepts: 0, rejects: 0, runtime: 0.001s)
+Starting decode mux sandwich optimization [v2.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed decode mux sandwich optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting decode mux optimization [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed decode mux optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting chop wide muxes [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed chop wide muxes (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting common data mux cascade opt [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed common data mux cascade opt (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting mux input consolidation [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed mux input consolidation (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting constant-data mux optimization [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed constant-data mux optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting chain-to-tree inequality transform [v2.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed chain-to-tree inequality transform (accepts: 0, rejects: 0, runtime: 0.001s)
+Starting reconvergence optimization [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed reconvergence optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting logic restructure optimization [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed logic restructure optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting common select mux optimization [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed common select mux optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting identity transform [v3.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed identity transform (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting reduce operator chain [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed reduce operator chain (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting common data mux cascade opt [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed common data mux cascade opt (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting mux input consolidation [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed mux input consolidation (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting optimize datapath elements [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed optimize datapath elements (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting datapath recasting [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed datapath recasting (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting clip mux common data inputs [v1.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed clip mux common data inputs (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting clip the non-user hierarchies [v2.0] (stage: pre_rtlopt, startdef: WA_8, recur: true)
+Completed clip the non-user hierarchies (accepts: 0, rejects: 0, runtime: 0.000s)
+
+Stage: pre_rtlopt
+----------------------------------------------------------------
+| Transform                 | Accepts | Rejects | Runtime (ms) | 
+----------------------------------------------------------------
+| hlo_infer_macro           |       0 |       0 |         1.00 | 
+| hlo_decode_mux_sandwich   |       0 |       0 |         0.00 | 
+| hlo_mux_decode            |       0 |       0 |         0.00 | 
+| hlo_chop_mux              |       0 |       0 |         0.00 | 
+| hlo_mux_cascade_opt       |       0 |       0 |         0.00 | 
+| hlo_mux_consolidation     |       0 |       0 |         0.00 | 
+| hlo_constant_mux_opt      |       0 |       0 |         0.00 | 
+| hlo_inequality_transform  |       0 |       0 |         1.00 | 
+| hlo_reconv_opt            |       0 |       0 |         0.00 | 
+| hlo_restructure           |       0 |       0 |         0.00 | 
+| hlo_common_select_muxopto |       0 |       0 |         0.00 | 
+| hlo_identity_transform    |       0 |       0 |         0.00 | 
+| hlo_reduce_operator_chain |       0 |       0 |         0.00 | 
+| hlo_mux_cascade_opt       |       0 |       0 |         0.00 | 
+| hlo_mux_consolidation     |       0 |       0 |         0.00 | 
+| hlo_optimize_datapath     |       0 |       0 |         0.00 | 
+| hlo_datapath_recast       |       0 |       0 |         0.00 | 
+| hlo_clip_mux_input        |       0 |       0 |         0.00 | 
+| hlo_clip                  |       0 |       0 |         0.00 | 
+----------------------------------------------------------------
+Running Unified Mux Engine Tricks...
+Completed Unified Mux Engine Tricks
+
+Stage: post_hlo_rtlopt
+--------------------------------------------------
+| Trick       | Accepts | Rejects | Runtime (ms) | 
+--------------------------------------------------
+| ume_runtime |       0 |       0 |         0.00 | 
+--------------------------------------------------
+Number of big hc bmuxes before = 0
+Info    : Pre-processed datapath logic. [DPOPT-6]
+        : No pre-processing optimizations applied to datapath logic in 'WA_8'.
+Info    : Skipping datapath optimization. [DPOPT-5]
+        : There is no datapath logic in 'WA_8'.
+Number of big hc bmuxes after = 0
+Starting logic reduction [v1.0] (stage: post_rtlopt, startdef: WA_8, recur: true)
+Completed logic reduction (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting mux data reorder optimization [v1.0] (stage: post_rtlopt, startdef: WA_8, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+
+Stage: post_rtlopt
+----------------------------------------------------------
+| Transform           | Accepts | Rejects | Runtime (ms) | 
+----------------------------------------------------------
+| hlo_logic_reduction |       0 |       0 |         0.00 | 
+| hlo_mux_reorder     |       0 |       0 |         0.00 | 
+----------------------------------------------------------
+Starting mux speculation [v1.0] (stage: post_muxopt, startdef: WA_8, recur: true)
+Starting speculation optimization
+Completed speculation optimization (accepts:0)
+Completed mux speculation (accepts: 0, rejects: 0, runtime: 0.005s)
+
+Stage: post_muxopt
+------------------------------------------------------
+| Transform       | Accepts | Rejects | Runtime (ms) | 
+------------------------------------------------------
+| hlo_speculation |       0 |       0 |         5.00 | 
+------------------------------------------------------
+==================================
+Stage : to_generic 
+==================================
+  =================
+   Message Summary
+  =================
+--------------------------------------------------------------------------------
+|    Id    |  Sev   |Count |                   Message Text                    |
+--------------------------------------------------------------------------------
+| CDFG-250 |Info    |    1 |Processing multi-dimensional arrays.               |
+| DPOPT-5  |Info    |    1 |Skipping datapath optimization.                    |
+| DPOPT-6  |Info    |    1 |Pre-processed datapath logic.                      |
+| ELAB-1   |Info    |    1 |Elaborating Design.                                |
+| ELAB-2   |Info    |    2 |Elaborating Subdesign.                             |
+| ELAB-3   |Info    |    1 |Done Elaborating Design.                           |
+| LBR-41   |Info    |    2 |An output library pin lacks a function attribute.  |
+|          |        |      |If the remainder of this library cell's semantic   |
+|          |        |      | checks are successful, it will be considered as a |
+|          |        |      | timing-model                                      |
+|          |        |      | (because one of its outputs does not have a valid |
+|          |        |      | function.                                         |
+| LBR-155  |Info    |  372 |Mismatch in unateness between 'timing_sense'       |
+|          |        |      | attribute and the function.                       |
+|          |        |      |The 'timing_sense' attribute will be respected.    |
+| LBR-161  |Info    |    1 |Setting the maximum print count of this message to |
+|          |        |      | 10 if information_level is less than 9.           |
+| LBR-162  |Info    |  124 |Both 'pos_unate' and 'neg_unate' timing_sense arcs |
+|          |        |      | have been processed.                              |
+|          |        |      |Setting the 'timing_sense' to non_unate.           |
+| LBR-170  |Info    |   48 |Ignoring specified timing sense.                   |
+|          |        |      |Timing sense should never be set with              |
+|          |        |      | 'rising_edge' or 'falling_edge' timing type.      |
+| LBR-412  |Info    |    2 |Created nominal operating condition.               |
+|          |        |      |The nominal operating condition is represented,    |
+|          |        |      | either by the nominal PVT values specified in the |
+|          |        |      | library source                                    |
+|          |        |      | (via nom_process,nom_voltage and nom_temperature  |
+|          |        |      | respectively)                                     |
+|          |        |      | , or by the default PVT values (1.0,1.0,1.0).     |
+| LBR-516  |Info    |    1 |Missing library level attribute.                   |
+| LBR-518  |Info    |    1 |Missing a function attribute in the output pin     |
+|          |        |      | definition.                                       |
+| PHYS-752 |Info    |    1 |Partition Based Synthesis execution skipped.       |
+| SYNTH-1  |Info    |    1 |Synthesizing.                                      |
+| TUI-83   |Warning |    1 |Cannot modify library search path after reading    |
+|          |        |      | library(s).                                       |
+|          |        |      |You must set the 'init_lib_search_path' attribute  |
+|          |        |      | before you set the 'library' attribute.           |
+--------------------------------------------------------------------------------
+Mapper: Libraries have:
+	domain _default_: 324 combo usable cells and 128 sequential usable cells
+Multi-threaded constant propagation [1|0] ...
+Multi-threaded Virtual Mapping    (8 threads per ST process, 8 of 20 CPUs usable)
+==================================
+Stage : first_condense 
+==================================
+  =================
+   Message Summary
+  =================
+--------------------------------------------------------------------------------
+|   Id   |Sev  |Count |                     Message Text                       |
+--------------------------------------------------------------------------------
+| GLO-51 |Info |   64 |Hierarchical instance automatically ungrouped.          |
+|        |     |      |Hierarchical instances can be automatically ungrouped   |
+|        |     |      | to allow for better area or timing optimization. To    |
+|        |     |      | prevent this ungroup, set the root-level attribute     |
+|        |     |      | 'auto_ungroup' to 'none'. You can also prevent         |
+|        |     |      | individual ungroup with setting the attribute          |
+|        |     |      | 'ungroup_ok' of instances or modules to 'false'.       |
+--------------------------------------------------------------------------------
+ 
+Global mapping target info
+==========================
+Cost Group 'default' target slack: Unconstrained
+
+PBS_Generic_Opt-Post - Elapsed_Time 1, CPU_Time 0.8488350000000002
+stamp 'PBS_Generic_Opt-Post' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:07) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:00 (Sep03) |  323.9 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:01) | 100.0(100.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+PBS_Generic-Postgen HBO Optimizations - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_Generic-Postgen HBO Optimizations' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:07) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:00 (Sep03) |  323.9 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:01) | 100.0(100.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+##>=================== Cadence Confidential (Generic-Logical) ===================
+##>=================== Cadence Confidential (Generic-Logical) ===================
+##>Main Thread Summary:
+##>----------------------------------------------------------------------------------------
+##>STEP                           Elapsed       WNS       TNS     Insts      Area    Memory
+##>----------------------------------------------------------------------------------------
+##>G:Initial                            0         -         -       333      2540       323
+##>G:Setup                              0         -         -         -         -         -
+##>G:Launch ST                          0         -         -         -         -         -
+##>G:Design Partition                   0         -         -         -         -         -
+##>G:Create Partition Netlists          0         -         -         -         -         -
+##>G:Init Power                         0         -         -         -         -         -
+##>G:Budgeting                          0         -         -         -         -         -
+##>G:Derenv-DB                          0         -         -         -         -         -
+##>G:Debug Outputs                      0         -         -         -         -         -
+##>G:ST loading                         0         -         -         -         -         -
+##>G:Distributed                        0         -         -         -         -         -
+##>G:Timer                              0         -         -         -         -         -
+##>G:Assembly                           0         -         -         -         -         -
+##>G:DFT                                0         -         -         -         -         -
+##>G:Const Prop                         0         -         -       546      4165       323
+##>G:Misc                               1
+##>----------------------------------------------------------------------------------------
+##>Total Elapsed                        1
+##>========================================================================================
+Info    : Done synthesizing. [SYNTH-2]
+        : Done synthesizing 'WA_8' to generic gates.
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   syn_gen
+@file(exic1.tcl) 25: 			write_hdl
+
+// Generated by Cadence Genus(TM) Synthesis Solution 21.14-s082_1
+// Generated on: Sep  3 2024 10:25:01 IST (Sep  3 2024 04:55:01 UTC)
+
+// Verification Directory fv/WA_8 
+
+module WA_8(x, y, z);
+  input [7:0] x, y;
+  output [16:0] z;
+  wire [7:0] x, y;
+  wire [16:0] z;
+  wire [54:0] fca;
+  wire [2:0] FA47_faw;
+  wire [2:0] FA46_faw;
+  wire [2:0] FA45_faw;
+  wire [2:0] FA44_faw;
+  wire [2:0] FA43_faw;
+  wire [2:0] FA42_faw;
+  wire [2:0] FA41_faw;
+  wire [2:0] FA40_faw;
+  wire [41:0] fsu;
+  wire [54:0] hca;
+  wire [2:0] FA39_faw;
+  wire [41:0] hsu;
+  wire [2:0] FA35_faw;
+  wire [2:0] FA32_faw;
+  wire [2:0] FA34_faw;
+  wire [2:0] FA33_faw;
+  wire [2:0] FA36_faw;
+  wire [2:0] FA26_faw;
+  wire [2:0] FA29_faw;
+  wire [2:0] FA28_faw;
+  wire [2:0] FA37_faw;
+  wire [2:0] FA27_faw;
+  wire [2:0] FA30_faw;
+  wire [2:0] FA38_faw;
+  wire [2:0] FA31_faw;
+  wire [2:0] FA20_faw;
+  wire [7:0] \pp[1] ;
+  wire [2:0] FA13_faw;
+  wire [7:0] \pp[0] ;
+  wire [2:0] FA19_faw;
+  wire [2:0] FA22_faw;
+  wire [7:0] \pp[2] ;
+  wire [2:0] FA14_faw;
+  wire [2:0] FA23_faw;
+  wire [7:0] \pp[3] ;
+  wire [2:0] FA18_faw;
+  wire [2:0] FA15_faw;
+  wire [2:0] FA17_faw;
+  wire [2:0] FA24_faw;
+  wire [7:0] \pp[4] ;
+  wire [2:0] FA16_faw;
+  wire [7:0] \pp[7] ;
+  wire [7:0] \pp[5] ;
+  wire [2:0] FA25_faw;
+  wire [2:0] FA5_faw;
+  wire [2:0] FA9_faw;
+  wire [2:0] FA7_faw;
+  wire [2:0] FA1_faw;
+  wire [2:0] FA6_faw;
+  wire [2:0] FA8_faw;
+  wire [7:0] \pp[6] ;
+  wire [2:0] FA12_faw;
+  wire [2:0] FA3_faw;
+  wire [2:0] FA2_faw;
+  wire [2:0] FA11_faw;
+  wire [2:0] FA10_faw;
+  wire [2:0] FA4_faw;
+  wire n_99, n_100, n_105, n_106, n_111, n_112, n_117, n_118;
+  wire n_123, n_124, n_129, n_130, n_135, n_136, n_141, n_142;
+  wire n_147, n_148, n_153, n_154, n_159, n_160, n_165, n_166;
+  wire n_171, n_172, n_177, n_178, n_181, n_186, n_187, n_192;
+  wire n_193, n_198, n_199, n_204, n_205, n_210, n_211, n_216;
+  wire n_217, n_222, n_223, n_228, n_229, n_234, n_235, n_240;
+  wire n_241, n_246, n_247, n_252, n_253, n_258, n_259, n_264;
+  wire n_265, n_270, n_271, n_276, n_277, n_282, n_283, n_288;
+  wire n_289, n_294, n_295, n_300, n_301, n_306, n_307, n_312;
+  wire n_313, n_318, n_319, n_324, n_325, n_330, n_331, n_336;
+  wire n_337, n_342, n_343, n_348, n_349, n_354, n_355, n_360;
+  wire n_361, n_366, n_367, n_372, n_373, n_378, n_379, n_382;
+  wire n_383, n_384, n_385, n_386, n_387, n_388, n_389, n_390;
+  wire n_391, n_392, n_393, n_394, n_395, n_396, n_397, n_398;
+  wire n_399, n_400, n_401, n_402, n_403, n_404, n_405, n_406;
+  wire n_407, n_408, n_409, n_410, n_411, n_412, n_413, n_414;
+  wire n_415, n_416, n_417, n_418, n_419, n_420, n_421, n_422;
+  wire n_423, n_424, n_425, n_426, n_427, n_428, n_429, n_430;
+  wire n_431, n_432, n_433, n_434, n_435, n_436, n_437, n_438;
+  wire n_439, n_440, n_441, n_442, n_443, n_444, n_445, n_446;
+  wire n_447, n_448, n_449, n_450, n_451, n_452, n_453, n_454;
+  wire n_455, n_456, n_457, n_458, n_459, n_460, n_461, n_462;
+  wire n_463, n_464, n_465, n_466, n_467, n_468, n_469, n_470;
+  wire n_471, n_472, n_473, n_474, n_475, n_476, n_477, n_478;
+  wire n_479, n_480, n_481, n_482, n_483, n_484, n_485, n_486;
+  wire n_487, n_488, n_489, n_490, n_491, n_492, n_493, n_494;
+  wire n_495, n_496, n_497, n_498, n_499, n_500, n_501, n_502;
+  wire n_503, n_504, n_505, n_506, n_507, n_508, n_509, n_510;
+  wire n_511, n_512, n_513, n_514, n_515, n_516, n_517, n_518;
+  wire n_519, n_520, n_521, n_522, n_523, n_524, n_525, n_526;
+  wire n_527, n_528, n_529, n_530, n_531, n_532, n_533, n_534;
+  wire n_535, n_536, n_537, n_538, n_539, n_540, n_541, n_542;
+  wire n_543, n_544, n_545, n_546, n_547, n_548, n_549, n_550;
+  wire n_551, n_552, n_553, n_554, n_555, n_556, n_557, n_558;
+  wire n_559, n_561, n_563, n_564, n_565, n_566, n_567, n_568;
+  wire n_569, n_570, n_571, n_572, n_573, n_574, n_575, n_576;
+  wire n_577, n_578, n_579, n_580, n_581, n_582, n_583, n_584;
+  wire n_585, n_586, n_587, n_588, n_589, n_590, n_591, n_592;
+  wire n_593, n_594, n_595, n_596, n_597, n_598, n_599, n_600;
+  wire n_601;
+  assign z[16] = 1'b0;
+  nand g218 (n_99, x[7], y[7]);
+  nand g221 (n_100, x[7], y[2]);
+  nand g367 (fca[47], n_378, n_379);
+  or g368 (n_382, wc, fca[46]);
+  not gc (wc, FA47_faw[0]);
+  or g369 (n_383, FA47_faw[0], wc0);
+  not gc0 (wc0, fca[46]);
+  nand g370 (z[14], n_382, n_383);
+  nand g371 (n_379, FA47_faw[0], fca[46]);
+  nand g372 (fca[46], n_372, n_373);
+  nand g373 (n_373, FA46_faw[0], fca[45]);
+  or g374 (n_384, wc1, fca[45]);
+  not gc1 (wc1, FA46_faw[0]);
+  or g375 (n_385, FA46_faw[0], wc2);
+  not gc2 (wc2, fca[45]);
+  nand g376 (z[13], n_384, n_385);
+  nand g377 (fca[45], n_366, n_367);
+  or g378 (n_386, wc3, fca[44]);
+  not gc3 (wc3, FA45_faw[0]);
+  or g379 (n_387, FA45_faw[0], wc4);
+  not gc4 (wc4, fca[44]);
+  nand g380 (z[12], n_386, n_387);
+  nand g381 (n_367, FA45_faw[0], fca[44]);
+  nand g382 (fca[44], n_360, n_361);
+  nand g383 (n_361, FA44_faw[0], fca[43]);
+  or g384 (n_388, wc5, fca[43]);
+  not gc5 (wc5, FA44_faw[0]);
+  or g385 (n_389, FA44_faw[0], wc6);
+  not gc6 (wc6, fca[43]);
+  nand g386 (z[11], n_388, n_389);
+  nand g387 (fca[43], n_354, n_355);
+  nand g388 (n_355, FA43_faw[0], fca[42]);
+  or g389 (n_390, wc7, fca[42]);
+  not gc7 (wc7, FA43_faw[0]);
+  or g390 (n_391, FA43_faw[0], wc8);
+  not gc8 (wc8, fca[42]);
+  nand g391 (z[10], n_390, n_391);
+  nand g392 (fca[42], n_348, n_349);
+  or g393 (n_392, wc9, fca[41]);
+  not gc9 (wc9, FA42_faw[0]);
+  or g394 (n_393, FA42_faw[0], wc10);
+  not gc10 (wc10, fca[41]);
+  nand g395 (z[9], n_392, n_393);
+  nand g396 (n_349, FA42_faw[0], fca[41]);
+  nand g397 (fca[41], n_342, n_343);
+  nand g398 (n_343, FA41_faw[0], fca[40]);
+  or g399 (n_394, wc11, fca[40]);
+  not gc11 (wc11, FA41_faw[0]);
+  or g400 (n_395, FA41_faw[0], wc12);
+  not gc12 (wc12, fca[40]);
+  nand g401 (z[8], n_394, n_395);
+  nand g402 (fca[40], n_336, n_337);
+  nand g403 (n_337, FA40_faw[0], fca[39]);
+  or g404 (n_396, wc13, fca[39]);
+  not gc13 (wc13, FA40_faw[0]);
+  or g405 (n_397, FA40_faw[0], wc14);
+  not gc14 (wc14, fca[39]);
+  nand g406 (z[7], n_396, n_397);
+  nand g407 (n_354, fsu[35], fca[34]);
+  nand g408 (n_342, fsu[33], fca[32]);
+  or g409 (n_398, wc15, fca[33]);
+  not gc15 (wc15, fsu[34]);
+  or g410 (n_399, fsu[34], wc16);
+  not gc16 (wc16, fca[33]);
+  nand g411 (FA42_faw[0], n_398, n_399);
+  nand g412 (n_360, fsu[36], fca[35]);
+  or g413 (n_400, wc17, fca[34]);
+  not gc17 (wc17, fsu[35]);
+  or g414 (n_401, fsu[35], wc18);
+  not gc18 (wc18, fca[34]);
+  nand g415 (FA43_faw[0], n_400, n_401);
+  nand g416 (n_348, fsu[34], fca[33]);
+  nand g417 (fca[39], n_330, n_331);
+  or g418 (n_402, wc19, fca[35]);
+  not gc19 (wc19, fsu[36]);
+  or g419 (n_403, fsu[36], wc20);
+  not gc20 (wc20, fca[35]);
+  nand g420 (FA44_faw[0], n_402, n_403);
+  or g421 (n_404, wc21, fca[32]);
+  not gc21 (wc21, fsu[33]);
+  or g422 (n_405, fsu[33], wc22);
+  not gc22 (wc22, fca[32]);
+  nand g423 (FA41_faw[0], n_404, n_405);
+  nand g424 (fca[34], n_318, n_319);
+  nand g425 (fca[33], n_312, n_313);
+  nand g426 (fca[35], n_324, n_325);
+  or g427 (n_336, wc23, hca[14]);
+  not gc23 (wc23, fsu[32]);
+  nand g428 (fca[32], n_306, n_307);
+  or g429 (n_331, wc24, hca[16]);
+  not gc24 (wc24, FA39_faw[0]);
+  nand g430 (n_406, fsu[32], hca[14]);
+  or g431 (n_407, fsu[32], hca[14]);
+  nand g432 (FA40_faw[0], n_406, n_407);
+  nand g433 (n_408, FA39_faw[0], hca[16]);
+  or g434 (n_409, FA39_faw[0], hca[16]);
+  nand g435 (z[6], n_408, n_409);
+  nand g436 (n_366, fsu[37], fca[36]);
+  nand g437 (n_410, hsu[14], hca[13]);
+  or g438 (n_411, hsu[14], hca[13]);
+  nand g439 (FA39_faw[0], n_410, n_411);
+  nand g440 (n_325, FA35_faw[0], fca[22]);
+  nand g441 (n_412, FA32_faw[0], hca[6]);
+  or g442 (n_413, FA32_faw[0], hca[6]);
+  nand g443 (fsu[32], n_412, n_413);
+  or g444 (n_414, wc25, fca[20]);
+  not gc25 (wc25, FA34_faw[0]);
+  or g445 (n_415, FA34_faw[0], wc26);
+  not gc26 (wc26, fca[20]);
+  nand g446 (fsu[34], n_414, n_415);
+  or g447 (n_416, wc27, fca[36]);
+  not gc27 (wc27, fsu[37]);
+  or g448 (n_417, fsu[37], wc28);
+  not gc28 (wc28, fca[36]);
+  nand g449 (FA45_faw[0], n_416, n_417);
+  or g450 (n_330, hca[13], wc29);
+  not gc29 (wc29, hsu[14]);
+  or g451 (n_418, wc30, fca[22]);
+  not gc30 (wc30, FA35_faw[0]);
+  or g452 (n_419, FA35_faw[0], wc31);
+  not gc31 (wc31, fca[22]);
+  nand g453 (fsu[35], n_418, n_419);
+  nand g454 (n_313, FA33_faw[0], fca[18]);
+  or g455 (n_307, wc32, hca[6]);
+  not gc32 (wc32, FA32_faw[0]);
+  nand g456 (n_319, FA34_faw[0], fca[20]);
+  or g457 (n_420, wc33, fca[18]);
+  not gc33 (wc33, FA33_faw[0]);
+  or g458 (n_421, FA33_faw[0], wc34);
+  not gc34 (wc34, fca[18]);
+  nand g459 (fsu[33], n_420, n_421);
+  nand g460 (n_312, fsu[29], fca[28]);
+  nand g461 (n_422, hsu[13], hca[12]);
+  or g462 (n_423, hsu[13], hca[12]);
+  nand g463 (z[5], n_422, n_423);
+  or g464 (hca[16], wc35, hca[12]);
+  not gc35 (wc35, hsu[13]);
+  nand g465 (n_324, fsu[31], fca[30]);
+  nand g466 (fca[36], n_294, n_295);
+  nand g467 (n_372, fsu[38], fca[37]);
+  or g468 (n_424, wc36, fca[28]);
+  not gc36 (wc36, fsu[29]);
+  or g469 (n_425, fsu[29], wc37);
+  not gc37 (wc37, fca[28]);
+  nand g470 (FA33_faw[0], n_424, n_425);
+  nand g471 (hca[14], fsu[27], fca[26]);
+  or g472 (n_426, wc38, fca[37]);
+  not gc38 (wc38, fsu[38]);
+  or g473 (n_427, fsu[38], wc39);
+  not gc39 (wc39, fca[37]);
+  nand g474 (FA46_faw[0], n_426, n_427);
+  nand g475 (n_318, fsu[30], fca[29]);
+  or g476 (n_428, wc40, fca[30]);
+  not gc40 (wc40, fsu[31]);
+  or g477 (n_429, fsu[31], wc41);
+  not gc41 (wc41, fca[30]);
+  nand g478 (FA35_faw[0], n_428, n_429);
+  or g479 (n_430, wc42, fca[29]);
+  not gc42 (wc42, fsu[30]);
+  or g480 (n_431, fsu[30], wc43);
+  not gc43 (wc43, fca[29]);
+  nand g481 (FA34_faw[0], n_430, n_431);
+  or g482 (n_432, wc44, fca[26]);
+  not gc44 (wc44, fsu[27]);
+  or g483 (n_433, fsu[27], wc45);
+  not gc45 (wc45, fca[26]);
+  nand g484 (hsu[14], n_432, n_433);
+  nand g485 (n_306, fsu[28], fca[27]);
+  or g486 (n_434, wc46, fca[27]);
+  not gc46 (wc46, fsu[28]);
+  or g487 (n_435, fsu[28], wc47);
+  not gc47 (wc47, fca[27]);
+  nand g488 (FA32_faw[0], n_434, n_435);
+  or g489 (hca[13], wc48, hca[9]);
+  not gc48 (wc48, fsu[26]);
+  nand g490 (fca[26], n_282, n_283);
+  nand g491 (n_436, fsu[26], hca[9]);
+  or g492 (n_437, fsu[26], hca[9]);
+  nand g493 (hsu[13], n_436, n_437);
+  nand g494 (n_295, FA36_faw[0], fca[23]);
+  nand g495 (fca[30], n_276, n_277);
+  nand g496 (fca[27], n_258, n_259);
+  nand g497 (fca[37], n_300, n_301);
+  nand g498 (fca[28], n_264, n_265);
+  nand g499 (fca[29], n_270, n_271);
+  or g500 (n_438, wc49, fca[23]);
+  not gc49 (wc49, FA36_faw[0]);
+  or g501 (n_439, FA36_faw[0], wc50);
+  not gc50 (wc50, fca[23]);
+  nand g502 (fsu[36], n_438, n_439);
+  nand g505 (FA47_faw[0], n_440, n_441);
+  or g506 (n_442, wc51, fca[31]);
+  not gc51 (wc51, hsu[10]);
+  or g507 (n_443, hsu[10], wc52);
+  not gc52 (wc52, fca[31]);
+  nand g508 (FA36_faw[0], n_442, n_443);
+  nand g509 (n_444, FA26_faw[0], hca[2]);
+  or g510 (n_445, FA26_faw[0], hca[2]);
+  nand g511 (fsu[26], n_444, n_445);
+  nand g512 (n_446, hsu[9], hca[8]);
+  or g513 (n_447, hsu[9], hca[8]);
+  nand g514 (z[4], n_446, n_447);
+  nand g516 (n_271, fsu[20], FA29_faw[0]);
+  nand g517 (n_265, fsu[18], FA28_faw[0]);
+  or g518 (hca[12], wc53, hca[8]);
+  not gc53 (wc53, hsu[9]);
+  or g519 (n_448, wc54, fca[24]);
+  not gc54 (wc54, FA37_faw[0]);
+  or g520 (n_449, FA37_faw[0], wc55);
+  not gc55 (wc55, fca[24]);
+  nand g521 (fsu[37], n_448, n_449);
+  or g522 (n_450, wc56, fsu[18]);
+  not gc56 (wc56, FA28_faw[0]);
+  or g523 (n_451, FA28_faw[0], wc57);
+  not gc57 (wc57, fsu[18]);
+  nand g524 (fsu[28], n_450, n_451);
+  or g525 (n_452, wc58, hsu[6]);
+  not gc58 (wc58, FA27_faw[0]);
+  or g526 (n_453, FA27_faw[0], wc59);
+  not gc59 (wc59, hsu[6]);
+  nand g527 (fsu[27], n_452, n_453);
+  or g528 (n_454, wc60, fsu[20]);
+  not gc60 (wc60, FA29_faw[0]);
+  or g529 (n_455, FA29_faw[0], wc61);
+  not gc61 (wc61, fsu[20]);
+  nand g530 (fsu[29], n_454, n_455);
+  nand g531 (n_259, FA27_faw[0], hsu[6]);
+  nand g532 (n_301, FA37_faw[0], fca[24]);
+  nand g533 (n_294, hsu[10], fca[31]);
+  or g534 (n_456, wc62, fsu[22]);
+  not gc62 (wc62, FA30_faw[0]);
+  or g535 (n_457, FA30_faw[0], wc63);
+  not gc63 (wc63, fsu[22]);
+  nand g536 (fsu[30], n_456, n_457);
+  or g537 (n_283, wc64, hca[2]);
+  not gc64 (wc64, FA26_faw[0]);
+  nand g538 (n_277, fsu[22], FA30_faw[0]);
+  or g539 (n_458, wc65, fca[19]);
+  not gc65 (wc65, fsu[21]);
+  or g540 (n_459, fsu[21], wc66);
+  not gc66 (wc66, fca[19]);
+  nand g541 (FA30_faw[0], n_458, n_459);
+  or g542 (n_460, wc67, fca[15]);
+  not gc67 (wc67, fsu[16]);
+  or g543 (n_461, fsu[16], wc68);
+  not gc68 (wc68, fca[15]);
+  nand g544 (FA27_faw[0], n_460, n_461);
+  nand g545 (n_282, fsu[15], fca[14]);
+  or g546 (n_462, wc69, fca[14]);
+  not gc69 (wc69, fsu[15]);
+  or g547 (n_463, fsu[15], wc70);
+  not gc70 (wc70, fca[14]);
+  nand g548 (FA26_faw[0], n_462, n_463);
+  nand g549 (fca[38], n_288, n_289);
+  or g550 (n_300, hca[10], wc71);
+  not gc71 (wc71, hsu[11]);
+  nand g551 (n_258, fsu[16], fca[15]);
+  nand g552 (n_276, fsu[21], fca[19]);
+  or g553 (n_464, wc72, fca[13]);
+  not gc72 (wc72, fsu[14]);
+  or g554 (n_465, fsu[14], wc73);
+  not gc73 (wc73, fca[13]);
+  nand g555 (hsu[9], n_464, n_465);
+  or g556 (n_466, wc74, fca[17]);
+  not gc74 (wc74, fsu[19]);
+  or g557 (n_467, fsu[19], wc75);
+  not gc75 (wc75, fca[17]);
+  nand g558 (FA29_faw[0], n_466, n_467);
+  nand g559 (n_264, fsu[17], fca[16]);
+  nand g560 (hca[9], fsu[14], fca[13]);
+  nand g561 (n_270, fsu[19], fca[17]);
+  or g562 (n_468, wc76, fca[16]);
+  not gc76 (wc76, fsu[17]);
+  or g563 (n_469, fsu[17], wc77);
+  not gc77 (wc77, fca[16]);
+  nand g564 (FA28_faw[0], n_468, n_469);
+  nand g565 (fca[31], n_252, n_253);
+  nand g566 (n_470, hsu[11], hca[10]);
+  or g567 (n_471, hsu[11], hca[10]);
+  nand g568 (FA37_faw[0], n_470, n_471);
+  nand g569 (fca[19], n_210, n_211);
+  or g570 (n_472, wc78, fca[25]);
+  not gc78 (wc78, FA38_faw[0]);
+  or g571 (n_473, FA38_faw[0], wc79);
+  not gc79 (wc79, fca[25]);
+  nand g572 (fsu[38], n_472, n_473);
+  nand g573 (fca[13], n_246, n_247);
+  or g574 (n_474, wc80, fsu[23]);
+  not gc80 (wc80, FA31_faw[0]);
+  or g575 (n_475, FA31_faw[0], wc81);
+  not gc81 (wc81, fsu[23]);
+  nand g576 (fsu[31], n_474, n_475);
+  nand g577 (fca[17], n_204, n_205);
+  nand g578 (fca[24], n_240, n_241);
+  or g579 (hca[8], wc82, hca[5]);
+  not gc82 (wc82, fsu[13]);
+  nand g580 (fca[14], n_186, n_187);
+  nand g581 (hca[10], hsu[4], fsu[24]);
+  nand g582 (fca[16], n_198, n_199);
+  nand g583 (n_476, fsu[13], hca[5]);
+  or g584 (n_477, fsu[13], hca[5]);
+  nand g585 (z[3], n_476, n_477);
+  nand g586 (fca[23], n_234, n_235);
+  nand g587 (fca[15], n_192, n_193);
+  nand g588 (n_253, fsu[23], FA31_faw[0]);
+  or g589 (n_478, wc83, fsu[24]);
+  not gc83 (wc83, hsu[4]);
+  or g590 (n_479, hsu[4], wc84);
+  not gc84 (wc84, fsu[24]);
+  nand g591 (hsu[10], n_478, n_479);
+  nand g592 (n_289, FA38_faw[0], fca[25]);
+  nand g593 (fca[22], n_228, n_229);
+  nand g594 (fca[20], n_222, n_223);
+  nand g595 (fca[18], n_216, n_217);
+  or g596 (n_223, wc85, \pp[1] [7]);
+  not gc85 (wc85, FA20_faw[0]);
+  nand g597 (n_480, FA13_faw[0], \pp[0] [3]);
+  or g598 (n_481, FA13_faw[0], \pp[0] [3]);
+  nand g599 (fsu[13], n_480, n_481);
+  nand g600 (n_211, fsu[10], FA19_faw[0]);
+  or g601 (n_229, wc86, \pp[2] [7]);
+  not gc86 (wc86, FA22_faw[0]);
+  or g602 (n_482, wc87, hsu[2]);
+  not gc87 (wc87, FA14_faw[0]);
+  or g603 (n_483, FA14_faw[0], wc88);
+  not gc88 (wc88, hsu[2]);
+  nand g604 (fsu[14], n_482, n_483);
+  nand g605 (n_252, fsu[12], fca[21]);
+  or g606 (n_247, wc89, \pp[0] [3]);
+  not gc89 (wc89, FA13_faw[0]);
+  or g607 (n_235, wc90, \pp[3] [7]);
+  not gc90 (wc90, FA23_faw[0]);
+  or g608 (n_217, wc91, \pp[0] [7]);
+  not gc91 (wc91, FA18_faw[0]);
+  or g609 (n_288, wc92, hca[11]);
+  not gc92 (wc92, hsu[7]);
+  nand g610 (n_193, fsu[5], FA15_faw[0]);
+  nand g611 (n_205, fsu[9], FA17_faw[0]);
+  nand g612 (n_484, FA24_faw[0], \pp[4] [7]);
+  or g613 (n_485, FA24_faw[0], \pp[4] [7]);
+  nand g614 (fsu[24], n_484, n_485);
+  or g615 (n_241, wc93, \pp[4] [7]);
+  not gc93 (wc93, FA24_faw[0]);
+  or g616 (n_486, wc94, fsu[7]);
+  not gc94 (wc94, FA16_faw[0]);
+  or g617 (n_487, FA16_faw[0], wc95);
+  not gc95 (wc95, fsu[7]);
+  nand g618 (fsu[16], n_486, n_487);
+  or g619 (n_488, wc96, fsu[10]);
+  not gc96 (wc96, FA19_faw[0]);
+  or g620 (n_489, FA19_faw[0], wc97);
+  not gc97 (wc97, fsu[10]);
+  nand g621 (fsu[19], n_488, n_489);
+  nand g622 (n_490, FA22_faw[0], \pp[2] [7]);
+  or g623 (n_491, FA22_faw[0], \pp[2] [7]);
+  nand g624 (fsu[22], n_490, n_491);
+  nand g625 (n_199, fsu[7], FA16_faw[0]);
+  nand g626 (n_187, FA14_faw[0], hsu[2]);
+  nand g627 (n_492, hsu[7], hca[11]);
+  or g628 (n_493, hsu[7], hca[11]);
+  nand g629 (FA38_faw[0], n_492, n_493);
+  nand g630 (n_494, FA18_faw[0], \pp[0] [7]);
+  or g631 (n_495, FA18_faw[0], \pp[0] [7]);
+  nand g632 (fsu[18], n_494, n_495);
+  or g633 (n_496, wc98, fca[21]);
+  not gc98 (wc98, fsu[12]);
+  or g634 (n_497, fsu[12], wc99);
+  not gc99 (wc99, fca[21]);
+  nand g635 (FA31_faw[0], n_496, n_497);
+  nand g636 (n_498, FA20_faw[0], \pp[1] [7]);
+  or g637 (n_499, FA20_faw[0], \pp[1] [7]);
+  nand g638 (fsu[20], n_498, n_499);
+  or g639 (n_500, wc100, fsu[9]);
+  not gc100 (wc100, FA17_faw[0]);
+  or g640 (n_501, FA17_faw[0], wc101);
+  not gc101 (wc101, fsu[9]);
+  nand g641 (fsu[17], n_500, n_501);
+  nand g642 (n_502, FA23_faw[0], \pp[3] [7]);
+  or g643 (n_503, FA23_faw[0], \pp[3] [7]);
+  nand g644 (fsu[23], n_502, n_503);
+  or g645 (n_504, wc102, fsu[5]);
+  not gc102 (wc102, FA15_faw[0]);
+  or g646 (n_505, FA15_faw[0], wc103);
+  not gc103 (wc103, fsu[5]);
+  nand g647 (fsu[15], n_504, n_505);
+  nand g648 (n_192, fsu[4], fca[3]);
+  or g649 (n_506, wc104, fca[2]);
+  not gc104 (wc104, fsu[3]);
+  or g650 (n_507, fsu[3], wc105);
+  not gc105 (wc105, fca[2]);
+  nand g651 (FA14_faw[0], n_506, n_507);
+  or g652 (n_222, \pp[2] [6], wc106);
+  not gc106 (wc106, fca[9]);
+  or g653 (n_228, \pp[3] [6], wc107);
+  not gc107 (wc107, fca[10]);
+  or g654 (n_508, wc108, fca[1]);
+  not gc108 (wc108, fsu[2]);
+  or g655 (n_509, fsu[2], wc109);
+  not gc109 (wc109, fca[1]);
+  nand g656 (FA13_faw[0], n_508, n_509);
+  or g657 (n_234, \pp[4] [6], wc110);
+  not gc110 (wc110, fca[11]);
+  or g658 (n_216, \pp[1] [6], wc111);
+  not gc111 (wc111, fca[7]);
+  nand g659 (n_198, fsu[6], fca[4]);
+  or g660 (n_510, \pp[7] [5], fsu[25]);
+  nand g661 (n_511, \pp[7] [5], fsu[25]);
+  nand g662 (hsu[11], n_510, n_511);
+  or g663 (n_240, \pp[5] [6], wc112);
+  not gc112 (wc112, fca[12]);
+  or g664 (n_512, wc113, fca[3]);
+  not gc113 (wc113, fsu[4]);
+  or g665 (n_513, fsu[4], wc114);
+  not gc114 (wc114, fca[3]);
+  nand g666 (FA15_faw[0], n_512, n_513);
+  or g667 (hca[6], wc115, \pp[0] [6]);
+  not gc115 (wc115, fca[5]);
+  or g668 (n_514, wc116, fca[8]);
+  not gc116 (wc116, hsu[3]);
+  or g669 (n_515, hsu[3], wc117);
+  not gc117 (wc117, fca[8]);
+  nand g670 (FA19_faw[0], n_514, n_515);
+  or g671 (n_516, wc118, fca[4]);
+  not gc118 (wc118, fsu[6]);
+  or g672 (n_517, fsu[6], wc119);
+  not gc119 (wc119, fca[4]);
+  nand g673 (FA16_faw[0], n_516, n_517);
+  or g674 (hca[11], \pp[7] [5], wc120);
+  not gc120 (wc120, fsu[25]);
+  nand g675 (n_518, fca[5], \pp[0] [6]);
+  or g676 (n_519, fca[5], \pp[0] [6]);
+  nand g677 (hsu[6], n_518, n_519);
+  nand g678 (fca[21], hca[3], n_181);
+  nand g679 (n_520, fca[10], \pp[3] [6]);
+  or g680 (n_521, fca[10], \pp[3] [6]);
+  nand g681 (FA22_faw[0], n_520, n_521);
+  nand g682 (n_186, fsu[3], fca[2]);
+  nand g683 (fca[25], n_177, n_178);
+  nand g684 (n_246, fsu[2], fca[1]);
+  nand g685 (n_210, hsu[3], fca[8]);
+  nand g686 (n_522, fca[12], \pp[5] [6]);
+  or g687 (n_523, fca[12], \pp[5] [6]);
+  nand g688 (FA24_faw[0], n_522, n_523);
+  nand g689 (n_524, fca[9], \pp[2] [6]);
+  or g690 (n_525, fca[9], \pp[2] [6]);
+  nand g691 (FA20_faw[0], n_524, n_525);
+  or g692 (n_526, wc121, fca[6]);
+  not gc121 (wc121, fsu[8]);
+  or g693 (n_527, fsu[8], wc122);
+  not gc122 (wc122, fca[6]);
+  nand g694 (FA17_faw[0], n_526, n_527);
+  nand g695 (n_204, fsu[8], fca[6]);
+  nand g696 (n_528, fca[7], \pp[1] [6]);
+  or g697 (n_529, fca[7], \pp[1] [6]);
+  nand g698 (FA18_faw[0], n_528, n_529);
+  nand g699 (n_530, fca[11], \pp[4] [6]);
+  or g700 (n_531, fca[11], \pp[4] [6]);
+  nand g701 (FA23_faw[0], n_530, n_531);
+  nand g702 (fca[2], n_111, n_112);
+  nand g703 (fca[3], n_117, n_118);
+  nand g704 (fca[4], n_123, n_124);
+  nand g705 (fca[6], n_129, n_130);
+  or g707 (n_178, wc123, \pp[5] [7]);
+  not gc123 (wc123, FA25_faw[0]);
+  nand g708 (fca[7], n_135, n_136);
+  nand g709 (fca[1], n_105, n_106);
+  nand g710 (fca[12], n_165, n_166);
+  nand g711 (fca[8], n_141, n_142);
+  nand g712 (fca[9], n_147, n_148);
+  nand g713 (fca[5], n_171, n_172);
+  nand g716 (fsu[21], n_532, n_533);
+  nand g717 (fca[10], n_153, n_154);
+  nand g718 (fca[11], n_159, n_160);
+  nand g719 (n_534, fsu[1], hca[1]);
+  or g720 (n_535, fsu[1], hca[1]);
+  nand g721 (z[2], n_534, n_535);
+  nand g722 (n_536, FA25_faw[0], \pp[5] [7]);
+  or g723 (n_537, FA25_faw[0], \pp[5] [7]);
+  nand g724 (fsu[25], n_536, n_537);
+  or g725 (hca[5], wc124, hca[1]);
+  not gc124 (wc124, fsu[1]);
+  or g726 (n_172, wc125, \pp[0] [5]);
+  not gc125 (wc125, FA5_faw[0]);
+  or g727 (n_148, wc126, \pp[2] [5]);
+  not gc126 (wc126, FA9_faw[0]);
+  nand g728 (n_538, FA7_faw[0], \pp[1] [5]);
+  or g729 (n_539, FA7_faw[0], \pp[1] [5]);
+  nand g730 (fsu[7], n_538, n_539);
+  nand g731 (n_540, FA1_faw[0], \pp[0] [2]);
+  or g732 (n_541, FA1_faw[0], \pp[0] [2]);
+  nand g733 (fsu[1], n_540, n_541);
+  nand g734 (n_542, FA6_faw[0], \pp[4] [2]);
+  or g735 (n_543, FA6_faw[0], \pp[4] [2]);
+  nand g736 (fsu[6], n_542, n_543);
+  nand g737 (n_544, FA8_faw[0], \pp[5] [2]);
+  or g738 (n_545, FA8_faw[0], \pp[5] [2]);
+  nand g739 (fsu[8], n_544, n_545);
+  or g740 (n_546, hca[4], wc127);
+  not gc127 (wc127, \pp[6] [6]);
+  or g741 (n_547, wc128, \pp[6] [6]);
+  not gc128 (wc128, hca[4]);
+  nand g742 (FA25_faw[0], n_546, n_547);
+  or g743 (n_166, wc129, \pp[5] [5]);
+  not gc129 (wc129, FA12_faw[0]);
+  nand g744 (n_548, FA3_faw[0], \pp[2] [2]);
+  or g745 (n_549, FA3_faw[0], \pp[2] [2]);
+  nand g746 (fsu[3], n_548, n_549);
+  nand g747 (n_550, FA2_faw[0], \pp[1] [2]);
+  or g748 (n_551, FA2_faw[0], \pp[1] [2]);
+  nand g749 (fsu[2], n_550, n_551);
+  or g750 (n_142, wc130, \pp[5] [2]);
+  not gc130 (wc130, FA8_faw[0]);
+  nand g751 (n_552, FA9_faw[0], \pp[2] [5]);
+  or g752 (n_553, FA9_faw[0], \pp[2] [5]);
+  nand g753 (fsu[9], n_552, n_553);
+  nand g754 (n_554, FA5_faw[0], \pp[0] [5]);
+  or g755 (n_555, FA5_faw[0], \pp[0] [5]);
+  nand g756 (fsu[5], n_554, n_555);
+  or g757 (n_160, wc131, \pp[4] [5]);
+  not gc131 (wc131, FA11_faw[0]);
+  or g758 (n_130, wc132, \pp[4] [2]);
+  not gc132 (wc132, FA6_faw[0]);
+  or g759 (n_112, wc133, \pp[1] [2]);
+  not gc133 (wc133, FA2_faw[0]);
+  nand g760 (n_556, FA12_faw[0], \pp[5] [5]);
+  or g761 (n_557, FA12_faw[0], \pp[5] [5]);
+  nand g762 (fsu[12], n_556, n_557);
+  nand g763 (n_558, FA10_faw[0], \pp[3] [5]);
+  or g764 (n_559, FA10_faw[0], \pp[3] [5]);
+  nand g765 (fsu[10], n_558, n_559);
+  or g766 (n_177, hca[4], \pp[6] [6]);
+  or g767 (n_154, wc134, \pp[3] [5]);
+  not gc134 (wc134, FA10_faw[0]);
+  or g768 (n_106, wc135, \pp[0] [2]);
+  not gc135 (wc135, FA1_faw[0]);
+  or g770 (n_561, n_99, wc136);
+  not gc136 (wc136, hca[7]);
+  or g773 (n_563, n_100, wc137);
+  not gc137 (wc137, hca[3]);
+  nand g775 (n_564, FA4_faw[0], \pp[3] [2]);
+  or g776 (n_565, FA4_faw[0], \pp[3] [2]);
+  nand g777 (fsu[4], n_564, n_565);
+  or g778 (n_118, wc138, \pp[2] [2]);
+  not gc138 (wc138, FA3_faw[0]);
+  nand g779 (n_566, FA11_faw[0], \pp[4] [5]);
+  or g780 (n_567, FA11_faw[0], \pp[4] [5]);
+  nand g781 (fsu[11], n_566, n_567);
+  or g782 (n_124, wc139, \pp[3] [2]);
+  not gc139 (wc139, FA4_faw[0]);
+  or g783 (n_136, wc140, \pp[1] [5]);
+  not gc140 (wc140, FA7_faw[0]);
+  or g784 (hca[4], \pp[7] [4], \pp[6] [5]);
+  or g785 (n_568, \pp[3] [3], wc141);
+  not gc141 (wc141, \pp[2] [4]);
+  or g786 (n_569, wc142, \pp[2] [4]);
+  not gc142 (wc142, \pp[3] [3]);
+  nand g787 (FA7_faw[0], n_568, n_569);
+  or g788 (n_570, \pp[7] [0], wc143);
+  not gc143 (wc143, \pp[6] [1]);
+  or g789 (n_571, wc144, \pp[6] [1]);
+  not gc144 (wc144, \pp[7] [0]);
+  nand g790 (FA8_faw[0], n_570, n_571);
+  or g791 (n_165, \pp[6] [4], \pp[7] [3]);
+  or g792 (n_572, \pp[4] [3], wc145);
+  not gc145 (wc145, \pp[3] [4]);
+  or g793 (n_573, wc146, \pp[3] [4]);
+  not gc146 (wc146, \pp[4] [3]);
+  nand g794 (FA9_faw[0], n_572, n_573);
+  or g795 (n_574, \pp[6] [0], wc147);
+  not gc147 (wc147, \pp[5] [1]);
+  or g796 (n_575, wc148, \pp[5] [1]);
+  not gc148 (wc148, \pp[6] [0]);
+  nand g797 (FA6_faw[0], n_574, n_575);
+  or g798 (n_159, \pp[5] [4], \pp[6] [3]);
+  or g799 (n_576, \pp[5] [3], wc149);
+  not gc149 (wc149, \pp[4] [4]);
+  or g800 (n_577, wc150, \pp[4] [4]);
+  not gc150 (wc150, \pp[5] [3]);
+  nand g801 (FA10_faw[0], n_576, n_577);
+  or g802 (hca[2], \pp[1] [3], \pp[0] [4]);
+  or g803 (n_578, \pp[1] [0], wc151);
+  not gc151 (wc151, \pp[0] [1]);
+  or g804 (n_579, wc152, \pp[0] [1]);
+  not gc152 (wc152, \pp[1] [0]);
+  nand g805 (z[1], n_578, n_579);
+  or g806 (n_153, \pp[4] [4], \pp[5] [3]);
+  or g807 (hca[3], \pp[7] [1], \pp[6] [2]);
+  or g808 (n_580, \pp[6] [3], wc153);
+  not gc153 (wc153, \pp[5] [4]);
+  or g809 (n_581, wc154, \pp[5] [4]);
+  not gc154 (wc154, \pp[6] [3]);
+  nand g810 (FA11_faw[0], n_580, n_581);
+  or g811 (n_171, \pp[1] [4], \pp[2] [3]);
+  or g812 (n_582, \pp[7] [3], wc155);
+  not gc155 (wc155, \pp[6] [4]);
+  or g813 (n_583, wc156, \pp[6] [4]);
+  not gc156 (wc156, \pp[7] [3]);
+  nand g814 (FA12_faw[0], n_582, n_583);
+  or g815 (n_147, \pp[3] [4], \pp[4] [3]);
+  or g816 (n_584, \pp[2] [3], wc157);
+  not gc157 (wc157, \pp[1] [4]);
+  or g817 (n_585, wc158, \pp[1] [4]);
+  not gc158 (wc158, \pp[2] [3]);
+  nand g818 (FA5_faw[0], n_584, n_585);
+  or g819 (hca[7], \pp[7] [6], \pp[6] [7]);
+  or g820 (n_141, \pp[6] [1], \pp[7] [0]);
+  or g821 (n_586, \pp[7] [1], wc159);
+  not gc159 (wc159, \pp[6] [2]);
+  or g822 (n_587, wc160, \pp[6] [2]);
+  not gc160 (wc160, \pp[7] [1]);
+  nand g823 (hsu[3], n_586, n_587);
+  or g824 (n_105, \pp[1] [1], \pp[2] [0]);
+  or g825 (hca[1], \pp[1] [0], \pp[0] [1]);
+  or g826 (n_588, \pp[5] [0], wc161);
+  not gc161 (wc161, \pp[4] [1]);
+  or g827 (n_589, wc162, \pp[4] [1]);
+  not gc162 (wc162, \pp[5] [0]);
+  nand g828 (FA4_faw[0], n_588, n_589);
+  or g829 (n_135, \pp[2] [4], \pp[3] [3]);
+  or g830 (n_590, \pp[4] [0], wc163);
+  not gc163 (wc163, \pp[3] [1]);
+  or g831 (n_591, wc164, \pp[3] [1]);
+  not gc164 (wc164, \pp[4] [0]);
+  nand g832 (FA3_faw[0], n_590, n_591);
+  or g833 (n_129, \pp[5] [1], \pp[6] [0]);
+  or g834 (n_592, \pp[7] [6], wc165);
+  not gc165 (wc165, \pp[6] [7]);
+  or g835 (n_593, wc166, \pp[6] [7]);
+  not gc166 (wc166, \pp[7] [6]);
+  nand g836 (hsu[7], n_592, n_593);
+  or g837 (n_123, \pp[4] [1], \pp[5] [0]);
+  or g838 (n_594, \pp[3] [0], wc167);
+  not gc167 (wc167, \pp[2] [1]);
+  or g839 (n_595, wc168, \pp[2] [1]);
+  not gc168 (wc168, \pp[3] [0]);
+  nand g840 (FA2_faw[0], n_594, n_595);
+  or g841 (n_117, \pp[3] [1], \pp[4] [0]);
+  or g842 (n_596, \pp[1] [3], wc169);
+  not gc169 (wc169, \pp[0] [4]);
+  or g843 (n_597, wc170, \pp[0] [4]);
+  not gc170 (wc170, \pp[1] [3]);
+  nand g844 (hsu[2], n_596, n_597);
+  or g845 (n_111, \pp[2] [1], \pp[3] [0]);
+  or g846 (n_598, \pp[7] [4], wc171);
+  not gc171 (wc171, \pp[6] [5]);
+  or g847 (n_599, wc172, \pp[6] [5]);
+  not gc172 (wc172, \pp[7] [4]);
+  nand g848 (hsu[4], n_598, n_599);
+  or g849 (n_600, \pp[2] [0], wc173);
+  not gc173 (wc173, \pp[1] [1]);
+  or g850 (n_601, wc174, \pp[1] [1]);
+  not gc174 (wc174, \pp[2] [0]);
+  nand g851 (FA1_faw[0], n_600, n_601);
+  nand g852 (\pp[0] [3], x[0], y[3]);
+  nand g853 (\pp[1] [3], x[1], y[3]);
+  nand g854 (\pp[0] [4], x[0], y[4]);
+  nand g855 (\pp[1] [1], x[1], y[1]);
+  nand g856 (\pp[0] [7], x[0], y[7]);
+  nand g857 (\pp[7] [1], x[7], y[1]);
+  nand g858 (\pp[5] [5], x[5], y[5]);
+  nand g859 (\pp[6] [2], x[6], y[2]);
+  nand g860 (\pp[6] [4], x[6], y[4]);
+  nand g861 (\pp[7] [3], x[7], y[3]);
+  nand g862 (\pp[2] [6], x[2], y[6]);
+  nand g863 (\pp[4] [5], x[4], y[5]);
+  nand g864 (\pp[1] [7], x[1], y[7]);
+  nand g865 (\pp[5] [4], x[5], y[4]);
+  nand g866 (\pp[6] [3], x[6], y[3]);
+  nand g867 (\pp[3] [5], x[3], y[5]);
+  nand g868 (\pp[3] [6], x[3], y[6]);
+  nand g869 (\pp[4] [4], x[4], y[4]);
+  nand g870 (\pp[5] [3], x[5], y[3]);
+  nand g871 (\pp[2] [7], x[2], y[7]);
+  nand g872 (\pp[2] [5], x[2], y[5]);
+  nand g873 (\pp[4] [6], x[4], y[6]);
+  nand g874 (\pp[3] [4], x[3], y[4]);
+  nand g875 (\pp[4] [3], x[4], y[3]);
+  nand g876 (\pp[3] [7], x[3], y[7]);
+  nand g877 (\pp[5] [2], x[5], y[2]);
+  nand g878 (\pp[5] [6], x[5], y[6]);
+  nand g879 (\pp[6] [1], x[6], y[1]);
+  nand g880 (\pp[7] [0], x[7], y[0]);
+  nand g881 (\pp[4] [7], x[4], y[7]);
+  nand g882 (\pp[1] [5], x[1], y[5]);
+  nand g883 (\pp[7] [4], x[7], y[4]);
+  nand g884 (\pp[2] [4], x[2], y[4]);
+  nand g885 (\pp[3] [3], x[3], y[3]);
+  nand g886 (\pp[6] [5], x[6], y[5]);
+  nand g887 (\pp[4] [2], x[4], y[2]);
+  nand g888 (\pp[6] [6], x[6], y[6]);
+  nand g889 (\pp[5] [1], x[5], y[1]);
+  nand g890 (\pp[6] [0], x[6], y[0]);
+  nand g891 (\pp[5] [7], x[5], y[7]);
+  nand g892 (\pp[0] [5], x[0], y[5]);
+  nand g895 (\pp[1] [4], x[1], y[4]);
+  nand g896 (\pp[2] [3], x[2], y[3]);
+  nand g897 (\pp[0] [6], x[0], y[6]);
+  nand g898 (\pp[3] [2], x[3], y[2]);
+  nand g899 (\pp[4] [1], x[4], y[1]);
+  nand g900 (\pp[5] [0], x[5], y[0]);
+  nand g901 (\pp[2] [0], x[2], y[0]);
+  nand g902 (\pp[2] [2], x[2], y[2]);
+  nand g903 (\pp[0] [1], x[0], y[1]);
+  nand g904 (\pp[3] [1], x[3], y[1]);
+  nand g905 (\pp[4] [0], x[4], y[0]);
+  nand g906 (\pp[1] [0], x[1], y[0]);
+  nand g907 (\pp[1] [2], x[1], y[2]);
+  nand g908 (\pp[6] [7], x[6], y[7]);
+  nand g909 (\pp[2] [1], x[2], y[1]);
+  nand g910 (\pp[3] [0], x[3], y[0]);
+  nand g911 (\pp[7] [6], x[7], y[6]);
+  nand g912 (\pp[0] [2], x[0], y[2]);
+  nand g913 (\pp[7] [5], x[7], y[5]);
+  nand g914 (\pp[1] [6], x[1], y[6]);
+  and g915 (z[0], x[0], y[0]);
+  or g919 (n_181, n_563, wc175);
+  not gc175 (wc175, fsu[11]);
+  or g920 (n_532, n_563, fsu[11]);
+  nand g921 (n_533, n_563, fsu[11]);
+  or g922 (n_378, n_561, wc176);
+  not gc176 (wc176, fca[38]);
+  or g923 (n_440, n_561, fca[38]);
+  nand g924 (n_441, n_561, fca[38]);
+  or g925 (z[15], fca[47], wc177);
+  not gc177 (wc177, hca[7]);
+endmodule
+
+@file(exic1.tcl) 26: 			syn_map
+##Generic Timing Info for library domain: _default_ typical gate delay: 127.0 ps std_slew: 15.5 ps std_load: 7.0 fF
+Info    : Mapping. [SYNTH-4]
+        : Mapping 'WA_8' using 'high' effort.
+Mapper: Libraries have:
+	domain _default_: 324 combo usable cells and 128 sequential usable cells
+Configuring mapper costing (none)
+TNS Restructuring config: no_value at stage: map applied.
+PBS_TechMap-Start - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_TechMap-Start' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:07) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:00 (Sep03) |  323.9 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:01) | 100.0(100.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+PBS_TechMap-Premap HBO Optimizations - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_TechMap-Premap HBO Optimizations' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:07) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:00 (Sep03) |  323.9 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:01) | 100.0(100.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+Info    : Partition Based Synthesis execution skipped. [PHYS-752]
+        : Design size is less than the partition size '100000' for distributed mapping optimization to kick in.
+Mapper: Libraries have:
+	domain _default_: 324 combo usable cells and 128 sequential usable cells
+Multi-threaded Virtual Mapping    (8 threads per ST process, 8 of 20 CPUs usable)
+ 
+Global mapping target info
+==========================
+Cost Group 'default' target slack: Unconstrained
+
+Multi-threaded Virtual Mapping    (8 threads per ST process, 8 of 20 CPUs usable)
+Multi-threaded Technology Mapping (8 threads per ST process, 8 of 20 CPUs usable)
+ 
+Global mapping status
+=====================
+                                    Worst 
+                           Total  Weighted
+Operation                   Area  Neg Slk Worst Path
+ global_map                 1451        0  N/A
+
+    Cost Group            Target    Slack    Diff.  Constr.
+-----------------------------------------------------------
+       default          unconst. unconst.              N.A. 
+
+ 
+Global incremental target info
+==============================
+Cost Group 'default' target slack: Unconstrained
+
+==================================
+Stage : global_incr_map 
+==================================
+  =================
+   Message Summary
+  =================
+-----------------------------------------------------------------------
+|    Id    |Sev  |Count |                Message Text                 |
+-----------------------------------------------------------------------
+| PHYS-752 |Info |    1 |Partition Based Synthesis execution skipped. |
+| SYNTH-2  |Info |    1 |Done synthesizing.                           |
+| SYNTH-4  |Info |    1 |Mapping.                                     |
+-----------------------------------------------------------------------
+ 
+Global incremental optimization status
+======================================
+                                    Worst 
+                           Total  Weighted
+Operation                   Area  Neg Slk Worst Path
+ global_incr                1451        0  N/A
+
+    Cost Group            Target    Slack    Diff.  Constr.
+-----------------------------------------------------------
+       default          unconst. unconst.              N.A. 
+
+INFO: skipping constant propagation
+PBS_Techmap-Global Mapping - Elapsed_Time 1, CPU_Time 1.2408299999999999
+stamp 'PBS_Techmap-Global Mapping' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:07) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:00 (Sep03) |  323.9 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:01) |  40.6( 50.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:01(00:00:01) |  59.4( 50.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_Techmap-Global Mapping
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+Warning : Command 'commit_power_intent' cannot proceed as there is no power intent loaded. [CPI-506]
+        : Command 'commit_power_intent' requires a valid power_intent to be loaded.
+Info    : Wrote formal verification information. [CFM-5]
+        : Wrote 'fv/WA_8/fv_map.fv.json' for netlist 'fv/WA_8/fv_map.v.gz'.
+Info    : Wrote dofile. [CFM-1]
+        : Dofile is 'fv/WA_8/rtl_to_fv_map.do'.
+        : Alias mapping flow is enabled.
+PBS_TechMap-Datapath Postmap Operations - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_TechMap-Datapath Postmap Operations' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:07) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:00 (Sep03) |  323.9 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:01) |  40.6( 50.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:01(00:00:01) |  59.4( 50.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_Techmap-Global Mapping
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Datapath Postmap Operations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+PBS_TechMap-Postmap HBO Optimizations - Elapsed_Time 0, CPU_Time -0.0009410000000000807
+stamp 'PBS_TechMap-Postmap HBO Optimizations' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:07) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:00 (Sep03) |  323.9 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:01) |  40.6( 50.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:01(00:00:01) |  59.4( 50.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_Techmap-Global Mapping
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Datapath Postmap Operations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |  -0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Postmap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+ Doing ConstProp on design:WA_8 ... 
+
+Time taken by ConstProp Step: 00:00:00
+PBS_TechMap-Postmap Clock Gating - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_TechMap-Postmap Clock Gating' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:07) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:00 (Sep03) |  323.9 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:01) |  40.6( 50.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:01(00:00:01) |  59.4( 50.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_Techmap-Global Mapping
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Datapath Postmap Operations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |  -0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Postmap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Postmap Clock Gating
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+-------------------------------------------------------------------------------
+ hi_fo_buf                  1451        0         0         1        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+       hi_fo_buf         0  (        0 /        0 )  0.00
+
+ 
+Incremental optimization status
+===============================
+                                    Worst     Total - - DRC Totals - -
+                           Total  Weighted     Neg       Max     Max  
+Operation                   Area  Neg Slk     Slack      Cap   Fanout 
+ init_delay                 1451        0         0         1        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+       crit_upsz         0  (        0 /        0 )  0.00
+    plc_bal_star         0  (        0 /        0 )  0.00
+     drc_buftimb         0  (        0 /        0 )  0.00
+          plc_st         0  (        0 /        0 )  0.00
+    plc_st_fence         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+      plc_laf_st         0  (        0 /        0 )  0.00
+ plc_laf_st_fence         0  (        0 /        0 )  0.00
+     drc_buftims         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+   plc_laf_lo_st         0  (        0 /        0 )  0.00
+       plc_lo_st         0  (        0 /        0 )  0.00
+        mb_split         0  (        0 /        0 )  0.00
+
+ 
+Local TNS optimization status
+=============================
+                                    Worst     Total - - DRC Totals - -
+                           Total  Weighted     Neg       Max     Max  
+Operation                   Area  Neg Slk     Slack      Cap   Fanout 
+ init_tns                   1451        0         0         1        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+    plc_bal_star         0  (        0 /        0 )  0.00
+     drc_buftimb         0  (        0 /        0 )  0.00
+     drc_buftims         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+   plc_laf_lo_st         0  (        0 /        0 )  0.00
+       plc_lo_st         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+        setup_dn         0  (        0 /        0 )  0.00
+        mb_split         0  (        0 /        0 )  0.00
+
+PBS_TechMap-Postmap Cleanup - Elapsed_Time 0, CPU_Time -0.00024400000000035504
+stamp 'PBS_TechMap-Postmap Cleanup' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:07) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:00 (Sep03) |  323.9 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:01) |  40.6( 50.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:01(00:00:01) |  59.4( 50.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_Techmap-Global Mapping
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Datapath Postmap Operations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |  -0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Postmap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Postmap Clock Gating
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |  -0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Postmap Cleanup
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+PBS_Techmap-Post_MBCI - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_Techmap-Post_MBCI' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:07) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:00 (Sep03) |  323.9 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:01) |  40.6( 50.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:08) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:01 (Sep03) |  323.9 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:01(00:00:01) |  59.4( 50.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_Techmap-Global Mapping
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Datapath Postmap Operations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |  -0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Postmap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Postmap Clock Gating
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |  -0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_TechMap-Postmap Cleanup
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:09) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:25:02 (Sep03) |  323.9 MB | PBS_Techmap-Post_MBCI
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+##>=================== Cadence Confidential (Mapping-Logical) ===================
+##>Main Thread Summary:
+##>----------------------------------------------------------------------------------------
+##>STEP                           Elapsed       WNS       TNS     Insts      Area    Memory
+##>----------------------------------------------------------------------------------------
+##>M:Initial                            0         -         -       546      4165       323
+##>M:Pre Cleanup                        0         -         -       546      4165       323
+##>M:Setup                              0         -         -         -         -         -
+##>M:Launch ST                          0         -         -         -         -         -
+##>M:Design Partition                   0         -         -         -         -         -
+##>M:Create Partition Netlists          0         -         -         -         -         -
+##>M:Init Power                         0         -         -         -         -         -
+##>M:Budgeting                          0         -         -         -         -         -
+##>M:Derenv-DB                          0         -         -         -         -         -
+##>M:Debug Outputs                      0         -         -         -         -         -
+##>M:ST loading                         0         -         -         -         -         -
+##>M:Distributed                        0         -         -         -         -         -
+##>M:Timer                              0         -         -         -         -         -
+##>M:Assembly                           0         -         -         -         -         -
+##>M:DFT                                0         -         -         -         -         -
+##>M:DP Operations                      0         -         -       257      1450       323
+##>M:Const Prop                         0         -         0       257      1450       323
+##>M:Cleanup                            0         -         0       257      1450       323
+##>M:MBCI                               0         -         -       257      1450       323
+##>M:Const Gate Removal                 0         -         -         -         -         -
+##>M:Misc                               1
+##>----------------------------------------------------------------------------------------
+##>Total Elapsed                        1
+##>========================================================================================
+Info    : Done mapping. [SYNTH-5]
+        : Done mapping 'WA_8'.
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   syn_map
+@file(exic1.tcl) 27: 			write_hdl
+
+// Generated by Cadence Genus(TM) Synthesis Solution 21.14-s082_1
+// Generated on: Sep  3 2024 10:25:02 IST (Sep  3 2024 04:55:02 UTC)
+
+// Verification Directory fv/WA_8 
+
+module WA_8(x, y, z);
+  input [7:0] x, y;
+  output [16:0] z;
+  wire [7:0] x, y;
+  wire [16:0] z;
+  wire n_1, n_2, n_3, n_4, n_5, n_6, n_7, n_8;
+  wire n_9, n_10, n_11, n_12, n_13, n_14, n_15, n_16;
+  wire n_17, n_18, n_19, n_20, n_21, n_22, n_23, n_24;
+  wire n_25, n_26, n_27, n_28, n_29, n_30, n_31, n_32;
+  wire n_33, n_34, n_35, n_36, n_37, n_38, n_39, n_40;
+  wire n_41, n_42, n_44, n_45, n_46, n_47, n_48, n_49;
+  wire n_50, n_51, n_52, n_53, n_54, n_55, n_56, n_57;
+  wire n_58, n_59, n_60, n_61, n_62, n_63, n_64, n_65;
+  wire n_66, n_67, n_68, n_69, n_70, n_71, n_72, n_73;
+  wire n_74, n_75, n_76, n_77, n_78, n_79, n_80, n_81;
+  wire n_82, n_83, n_84, n_85, n_86, n_87, n_88, n_89;
+  wire n_90, n_91, n_92, n_93, n_94, n_95, n_96, n_98;
+  wire n_99, n_100, n_101, n_102, n_103, n_104, n_105, n_106;
+  wire n_107, n_108, n_109, n_110, n_111, n_112, n_113, n_114;
+  wire n_115, n_116, n_117, n_118, n_119, n_120, n_121, n_122;
+  wire n_123, n_124, n_125, n_126, n_127, n_128, n_129, n_130;
+  wire n_131, n_132, n_133, n_134, n_135, n_136, n_137, n_138;
+  wire n_139, n_140, n_141, n_142, n_143, n_144, n_145, n_146;
+  wire n_147, n_148, n_149, n_150, n_151, n_152, n_153, n_154;
+  wire n_156, n_157, n_158, n_159, n_160, n_161, n_162, n_163;
+  wire n_164, n_165, n_166, n_167, n_168, n_169, n_170, n_171;
+  wire n_172, n_173, n_175, n_176, n_177, n_178, n_179, n_180;
+  wire n_181, n_182, n_183, n_184, n_185, n_186, n_187, n_188;
+  wire n_189, n_190, n_191, n_192, n_193, n_194, n_195, n_196;
+  wire n_197, n_198, n_199, n_200, n_201, n_202, n_203, n_204;
+  wire n_205, n_206, n_207, n_208, n_209, n_210, n_211, n_212;
+  wire n_213, n_214, n_216, n_217, n_218, n_219, n_220, n_221;
+  wire n_222, n_223, n_224, n_225, n_226, n_227, n_228, n_229;
+  wire n_231, n_232, n_234, n_235, n_237, n_238, n_240, n_241;
+  wire n_243, n_244, n_246, n_247, n_249, n_250, n_252, n_253;
+  wire n_255;
+  assign z[16] = 1'b0;
+  OR2X2 g2920__2398(.A (n_40), .B (n_255), .Y (z[15]));
+  OAI22XL g2921__5107(.A0 (n_253), .A1 (n_252), .B0 (n_178), .B1
+       (n_179), .Y (n_255));
+  CLKXOR2X2 g2922__6260(.A (n_253), .B (n_252), .Y (z[14]));
+  CLKXOR2X2 g2924__4319(.A (n_249), .B (n_250), .Y (z[13]));
+  AOI22XL g2923__8428(.A0 (n_250), .A1 (n_249), .B0 (n_212), .B1
+       (n_211), .Y (n_253));
+  OAI22XL g2925__5526(.A0 (n_246), .A1 (n_247), .B0 (n_217), .B1
+       (n_216), .Y (n_250));
+  CLKXOR2X2 g2926__6783(.A (n_247), .B (n_246), .Y (z[12]));
+  CLKXOR2X2 g2928__3680(.A (n_243), .B (n_244), .Y (z[11]));
+  AOI22XL g2927__1617(.A0 (n_244), .A1 (n_243), .B0 (n_225), .B1
+       (n_224), .Y (n_246));
+  OAI22XL g2929__2802(.A0 (n_240), .A1 (n_241), .B0 (n_223), .B1
+       (n_222), .Y (n_244));
+  CLKXOR2X2 g2930__1705(.A (n_241), .B (n_240), .Y (z[10]));
+  CLKXOR2X2 g2932__5122(.A (n_237), .B (n_238), .Y (z[9]));
+  AOI22XL g2931__8246(.A0 (n_238), .A1 (n_237), .B0 (n_226), .B1
+       (n_227), .Y (n_240));
+  CLKXOR2X2 g2934__7098(.A (n_234), .B (n_235), .Y (z[8]));
+  OAI22XL g2933__6131(.A0 (n_235), .A1 (n_234), .B0 (n_220), .B1
+       (n_221), .Y (n_238));
+  CLKXOR2X2 g2936__1881(.A (n_231), .B (n_232), .Y (z[7]));
+  AOI22XL g2935__5115(.A0 (n_232), .A1 (n_231), .B0 (n_218), .B1
+       (n_219), .Y (n_235));
+  CLKXOR2X2 g2943__7482(.A (n_229), .B (n_228), .Y (z[6]));
+  OAI22XL g2937__4733(.A0 (n_229), .A1 (n_228), .B0 (n_213), .B1
+       (n_214), .Y (n_231));
+  MXI2XL g2939__6161(.A (n_210), .B (n_227), .S0 (n_226), .Y (n_237));
+  MXI2XL g2941__9315(.A (n_209), .B (n_225), .S0 (n_224), .Y (n_243));
+  XNOR2X1 g2938__9945(.A (n_223), .B (n_222), .Y (n_241));
+  XNOR2X1 g2940__2883(.A (n_221), .B (n_220), .Y (n_234));
+  MXI2XL g2942__2346(.A (n_195), .B (n_219), .S0 (n_218), .Y (n_232));
+  XNOR2X1 g2952__1666(.A (n_217), .B (n_216), .Y (n_247));
+  CLKXOR2X2 g2956__7410(.A (n_203), .B (n_204), .Y (z[5]));
+  XNOR2X1 g2950__6417(.A (n_214), .B (n_213), .Y (n_229));
+  MXI2XL g2957__5477(.A (n_196), .B (n_212), .S0 (n_211), .Y (n_249));
+  INVXL g2944(.A (n_210), .Y (n_227));
+  INVXL g2947(.A (n_209), .Y (n_225));
+  XNOR2X1 g2953__2398(.A (n_205), .B (n_206), .Y (n_220));
+  CLKXOR2X1 g2951__5107(.A (n_199), .B (n_200), .Y (n_226));
+  AOI22XL g2949__6260(.A0 (n_207), .A1 (n_208), .B0 (n_190), .B1
+       (n_189), .Y (n_209));
+  XNOR2X1 g2954__4319(.A (n_208), .B (n_207), .Y (n_222));
+  AOI22XL g2945__8428(.A0 (n_206), .A1 (n_205), .B0 (n_191), .B1
+       (n_192), .Y (n_210));
+  OR2X1 g2959__5526(.A (n_204), .B (n_203), .Y (n_228));
+  CLKXOR2X1 g2955__6783(.A (n_201), .B (n_202), .Y (n_218));
+  AOI22XL g2946__3680(.A0 (n_202), .A1 (n_201), .B0 (n_187), .B1
+       (n_188), .Y (n_221));
+  AOI22XL g2948__1617(.A0 (n_200), .A1 (n_199), .B0 (n_194), .B1
+       (n_193), .Y (n_223));
+  AOI22XL g2960__2802(.A0 (n_197), .A1 (n_198), .B0 (n_180), .B1
+       (n_181), .Y (n_217));
+  CLKXOR2X1 g2970__1705(.A (n_198), .B (n_197), .Y (n_224));
+  INVXL g2964(.A (n_196), .Y (n_212));
+  AOI21XL g2966__5122(.A0 (n_183), .A1 (n_182), .B0 (n_184), .Y
+       (n_213));
+  AOI21XL g2971__8246(.A0 (n_176), .A1 (n_175), .B0 (n_177), .Y
+       (n_203));
+  INVXL g2958(.A (n_195), .Y (n_219));
+  CLKXOR2X1 g2961__7098(.A (n_194), .B (n_193), .Y (n_200));
+  CLKXOR2X1 g2962__6131(.A (n_192), .B (n_191), .Y (n_206));
+  AOI22XL g2967__1881(.A0 (n_185), .A1 (n_186), .B0 (n_170), .B1
+       (n_171), .Y (n_196));
+  CLKXOR2X1 g2965__5115(.A (n_190), .B (n_189), .Y (n_207));
+  CLKXOR2X1 g2963__7482(.A (n_188), .B (n_187), .Y (n_202));
+  XNOR2X1 g2973__4733(.A (n_186), .B (n_185), .Y (n_216));
+  NOR2XL g2968__6161(.A (n_183), .B (n_182), .Y (n_184));
+  CLKXOR2X1 g2983__9315(.A (n_181), .B (n_180), .Y (n_197));
+  XNOR2X1 g2980__9945(.A (n_179), .B (n_178), .Y (n_252));
+  NOR2XL g2972__2883(.A (n_176), .B (n_175), .Y (n_177));
+  NAND2BXL g2969__2346(.AN (n_182), .B (n_183), .Y (n_195));
+  NAND2BXL g2974__1666(.AN (n_175), .B (n_176), .Y (n_214));
+  CLKXOR2X2 g2981__7410(.A (n_169), .B (n_168), .Y (z[4]));
+  OAI22XL g2977__6417(.A0 (n_173), .A1 (n_172), .B0 (n_154), .B1
+       (n_153), .Y (n_194));
+  OAI22XL g2978__5477(.A0 (n_162), .A1 (n_163), .B0 (n_149), .B1
+       (n_150), .Y (n_188));
+  OAI22XL g2979__2398(.A0 (n_167), .A1 (n_166), .B0 (n_144), .B1
+       (n_145), .Y (n_190));
+  CLKXOR2X1 g2982__5107(.A (n_173), .B (n_172), .Y (n_191));
+  CLKXOR2X1 g2984__6260(.A (n_165), .B (n_164), .Y (n_187));
+  MXI2XL g2985__4319(.A (n_160), .B (n_35), .S0 (n_161), .Y (n_175));
+  CLKXOR2X1 g2990__8428(.A (n_171), .B (n_170), .Y (n_185));
+  NAND2XL g2989__5526(.A (n_169), .B (n_168), .Y (n_204));
+  CLKXOR2X1 g2987__6783(.A (n_167), .B (n_166), .Y (n_193));
+  OAI22XL g2975__3680(.A0 (n_165), .A1 (n_164), .B0 (n_151), .B1
+       (n_152), .Y (n_192));
+  XNOR2X1 g2986__1617(.A (n_163), .B (n_162), .Y (n_182));
+  OAI22XL g2976__2802(.A0 (n_161), .A1 (n_160), .B0 (n_142), .B1
+       (n_143), .Y (n_183));
+  AOI22XL g2988__1705(.A0 (n_158), .A1 (n_159), .B0 (n_137), .B1
+       (n_138), .Y (n_178));
+  CLKXOR2X1 g2991__5122(.A (n_159), .B (n_158), .Y (n_211));
+  OAI21XL g3002__8246(.A0 (n_146), .A1 (n_147), .B0 (n_148), .Y
+       (n_181));
+  OAI22XL g2992__7098(.A0 (n_157), .A1 (n_156), .B0 (n_116), .B1
+       (n_115), .Y (n_180));
+  OAI21XL g2998__6131(.A0 (n_139), .A1 (n_140), .B0 (n_141), .Y
+       (n_168));
+  CLKXOR2X1 g3003__1881(.A (n_157), .B (n_156), .Y (n_189));
+  CLKXOR2X2 g3001__5115(.A (n_136), .B (n_135), .Y (z[3]));
+  XNOR2X1 g2993__7482(.A (n_154), .B (n_153), .Y (n_173));
+  XNOR2X1 g2994__4733(.A (n_152), .B (n_151), .Y (n_165));
+  XNOR2X1 g2995__6161(.A (n_150), .B (n_149), .Y (n_162));
+  NAND2XL g3004__9315(.A (n_147), .B (n_146), .Y (n_148));
+  XNOR2X1 g2996__9945(.A (n_145), .B (n_144), .Y (n_167));
+  NOR2BXL g3005__2883(.AN (n_146), .B (n_147), .Y (n_170));
+  XNOR2X1 g2997__2346(.A (n_143), .B (n_142), .Y (n_161));
+  NAND2XL g2999__1666(.A (n_140), .B (n_139), .Y (n_141));
+  NOR2BXL g3000__7410(.AN (n_140), .B (n_139), .Y (n_176));
+  MXI2XL g3007__6417(.A (n_41), .B (n_138), .S0 (n_137), .Y (n_158));
+  NOR2XL g3010__5477(.A (n_136), .B (n_135), .Y (n_169));
+  XNOR2X1 g3030__2398(.A (n_133), .B (n_134), .Y (n_156));
+  OAI22XL g3011__5107(.A0 (n_134), .A1 (n_133), .B0 (n_107), .B1
+       (n_106), .Y (n_198));
+  XNOR2X1 g3025__6260(.A (n_129), .B (n_130), .Y (n_166));
+  OAI21XL g3031__4319(.A0 (n_108), .A1 (n_109), .B0 (n_110), .Y
+       (n_171));
+  CLKXOR2X1 g3027__8428(.A (n_131), .B (n_132), .Y (n_146));
+  OAI22XL g3014__5526(.A0 (n_127), .A1 (n_128), .B0 (n_105), .B1
+       (n_104), .Y (n_199));
+  OAI22XL g3016__6783(.A0 (n_132), .A1 (n_131), .B0 (n_99), .B1 (n_98),
+       .Y (n_186));
+  OAI22XL g3017__3680(.A0 (n_125), .A1 (n_126), .B0 (n_103), .B1
+       (n_102), .Y (n_205));
+  OAI22XL g3018__1617(.A0 (n_130), .A1 (n_129), .B0 (n_101), .B1
+       (n_100), .Y (n_208));
+  XNOR2X1 g3019__2802(.A (n_128), .B (n_127), .Y (n_172));
+  XNOR2X1 g3022__1705(.A (n_126), .B (n_125), .Y (n_164));
+  XNOR2X1 g3024__5122(.A (n_123), .B (n_124), .Y (n_149));
+  XNOR2X1 g3026__8246(.A (n_119), .B (n_120), .Y (n_142));
+  AOI22XL g3008__7098(.A0 (n_124), .A1 (n_123), .B0 (n_93), .B1 (n_94),
+       .Y (n_152));
+  MXI2XL g3029__6131(.A (n_111), .B (n_1), .S0 (n_112), .Y (n_135));
+  AOI22XL g3006__1881(.A0 (n_121), .A1 (n_122), .B0 (n_89), .B1 (n_90),
+       .Y (n_143));
+  MXI2XL g3028__5115(.A (n_39), .B (n_122), .S0 (n_121), .Y (n_140));
+  XNOR2X1 g3023__7482(.A (n_118), .B (n_117), .Y (n_153));
+  AOI22XL g3009__4733(.A0 (n_120), .A1 (n_119), .B0 (n_91), .B1 (n_92),
+       .Y (n_150));
+  AOI22XL g3013__6161(.A0 (n_118), .A1 (n_117), .B0 (n_95), .B1 (n_96),
+       .Y (n_144));
+  AOI22XL g3015__9315(.A0 (n_113), .A1 (n_114), .B0 (n_85), .B1 (n_86),
+       .Y (n_154));
+  XNOR2X1 g3020__9945(.A (n_116), .B (n_115), .Y (n_157));
+  XNOR2X1 g3021__2883(.A (n_114), .B (n_113), .Y (n_151));
+  AOI22XL g3012__2346(.A0 (n_112), .A1 (n_111), .B0 (n_87), .B1 (n_88),
+       .Y (n_139));
+  NAND2XL g3032__1666(.A (n_109), .B (n_108), .Y (n_110));
+  NOR2BXL g3033__7410(.AN (n_108), .B (n_109), .Y (n_137));
+  MXI2XL g3036__6417(.A (n_107), .B (n_75), .S0 (n_106), .Y (n_134));
+  MXI2XL g3039__5477(.A (n_105), .B (n_71), .S0 (n_104), .Y (n_127));
+  MXI2XL g3041__2398(.A (n_103), .B (n_73), .S0 (n_102), .Y (n_125));
+  AOI21XL g3044__5107(.A0 (n_79), .A1 (n_78), .B0 (n_80), .Y (n_163));
+  MXI2XL g3045__6260(.A (n_101), .B (n_72), .S0 (n_100), .Y (n_130));
+  MXI2XL g3038__4319(.A (n_99), .B (n_74), .S0 (n_98), .Y (n_132));
+  CLKXOR2X2 g3050__8428(.A (n_77), .B (n_76), .Y (z[2]));
+  MXI2XL g3042__5526(.A (n_38), .B (n_96), .S0 (n_95), .Y (n_118));
+  CLKXOR2X1 g3040__6783(.A (n_94), .B (n_93), .Y (n_124));
+  AOI21XL g3034__3680(.A0 (n_84), .A1 (n_83), .B0 (n_42), .Y (n_116));
+  OAI22XL g3035__1617(.A0 (n_81), .A1 (n_82), .B0 (n_68), .B1 (n_67),
+       .Y (n_159));
+  CLKXOR2X1 g3043__2802(.A (n_92), .B (n_91), .Y (n_120));
+  CLKXOR2X1 g3046__1705(.A (n_90), .B (n_89), .Y (n_121));
+  CLKXOR2X1 g3047__5122(.A (n_88), .B (n_87), .Y (n_112));
+  CLKXOR2X1 g3037__8246(.A (n_86), .B (n_85), .Y (n_113));
+  MXI2XL g3052__7098(.A (n_84), .B (n_44), .S0 (n_83), .Y (n_145));
+  CLKXOR2X1 g3051__6131(.A (n_82), .B (n_81), .Y (n_108));
+  NOR2XL g3048__1881(.A (n_79), .B (n_78), .Y (n_80));
+  NOR2BXL g3049__5115(.AN (n_78), .B (n_79), .Y (n_201));
+  NAND2XL g3057__7482(.A (n_77), .B (n_76), .Y (n_136));
+  INVXL g3053(.A (n_75), .Y (n_107));
+  INVXL g3054(.A (n_74), .Y (n_99));
+  INVXL g3056(.A (n_73), .Y (n_103));
+  INVXL g3063(.A (n_72), .Y (n_101));
+  INVXL g3055(.A (n_71), .Y (n_105));
+  OAI22XL g3065__4733(.A0 (n_49), .A1 (n_50), .B0 (n_31), .B1 (n_32),
+       .Y (n_95));
+  OAI22XL g3059__6161(.A0 (n_57), .A1 (n_58), .B0 (n_22), .B1 (n_23),
+       .Y (n_74));
+  OAI22XL g3060__9315(.A0 (n_65), .A1 (n_66), .B0 (n_16), .B1 (n_17),
+       .Y (n_71));
+  OAI22XL g3061__9945(.A0 (n_69), .A1 (n_70), .B0 (n_14), .B1 (n_15),
+       .Y (n_94));
+  OAI22XL g3062__2883(.A0 (n_61), .A1 (n_62), .B0 (n_20), .B1 (n_21),
+       .Y (n_73));
+  OAI22XL g3064__2346(.A0 (n_63), .A1 (n_64), .B0 (n_29), .B1 (n_30),
+       .Y (n_86));
+  OAI22XL g3058__1666(.A0 (n_53), .A1 (n_54), .B0 (n_18), .B1 (n_19),
+       .Y (n_75));
+  OAI22XL g3066__7410(.A0 (n_55), .A1 (n_56), .B0 (n_27), .B1 (n_28),
+       .Y (n_92));
+  OAI22XL g3070__6417(.A0 (n_47), .A1 (n_48), .B0 (n_12), .B1 (n_13),
+       .Y (n_72));
+  OAI22XL g3068__5477(.A0 (n_59), .A1 (n_60), .B0 (n_33), .B1 (n_34),
+       .Y (n_90));
+  OAI22XL g3069__2398(.A0 (n_45), .A1 (n_46), .B0 (n_36), .B1 (n_37),
+       .Y (n_88));
+  OAI22XL g3067__5107(.A0 (n_51), .A1 (n_52), .B0 (n_25), .B1 (n_26),
+       .Y (n_78));
+  CLKXOR2X1 g3072__6260(.A (n_70), .B (n_69), .Y (n_91));
+  MXI2XL g3074__4319(.A (n_68), .B (n_24), .S0 (n_67), .Y (n_81));
+  CLKXOR2X1 g3075__8428(.A (n_66), .B (n_65), .Y (n_114));
+  CLKXOR2X1 g3076__5526(.A (n_64), .B (n_63), .Y (n_93));
+  CLKXOR2X1 g3077__6783(.A (n_62), .B (n_61), .Y (n_123));
+  CLKXOR2X1 g3079__3680(.A (n_60), .B (n_59), .Y (n_87));
+  XNOR2X1 g3080__1617(.A (n_58), .B (n_57), .Y (n_115));
+  CLKXOR2X1 g3081__2802(.A (n_56), .B (n_55), .Y (n_89));
+  CLKXOR2X1 g3082__1705(.A (n_54), .B (n_53), .Y (n_83));
+  CLKXOR2X1 g3083__5122(.A (n_52), .B (n_51), .Y (n_119));
+  CLKXOR2X1 g3084__8246(.A (n_50), .B (n_49), .Y (n_85));
+  CLKXOR2X1 g3085__7098(.A (n_48), .B (n_47), .Y (n_117));
+  CLKXOR2X1 g3086__6131(.A (n_46), .B (n_45), .Y (n_76));
+  INVXL g3071(.A (n_44), .Y (n_84));
+  AOI21X2 g3092__1881(.A0 (n_2), .A1 (n_3), .B0 (n_77), .Y (z[1]));
+  NAND3BXL g3073__5115(.AN (n_42), .B (y[2]), .C (x[7]), .Y (n_44));
+  INVXL g3089(.A (n_41), .Y (n_138));
+  NAND3BXL g3078__7482(.AN (n_40), .B (y[7]), .C (x[7]), .Y (n_179));
+  INVXL g3087(.A (n_39), .Y (n_122));
+  INVXL g3091(.A (n_38), .Y (n_96));
+  XNOR2X1 g3096__4733(.A (n_11), .B (n_10), .Y (n_41));
+  XNOR2X1 g3106__6161(.A (n_37), .B (n_36), .Y (n_45));
+  INVXL g3088(.A (n_35), .Y (n_160));
+  XNOR2X1 g3105__9315(.A (n_34), .B (n_33), .Y (n_59));
+  XNOR2X1 g3103__9945(.A (n_32), .B (n_31), .Y (n_49));
+  XNOR2X1 g3093__2883(.A (n_30), .B (n_29), .Y (n_63));
+  XNOR2X1 g3094__2346(.A (n_28), .B (n_27), .Y (n_55));
+  XNOR2X1 g3095__1666(.A (n_26), .B (n_25), .Y (n_51));
+  INVXL g3090(.A (n_24), .Y (n_68));
+  XNOR2X1 g3108__7410(.A (n_23), .B (n_22), .Y (n_57));
+  XNOR2X1 g3098__6417(.A (n_21), .B (n_20), .Y (n_61));
+  XNOR2X1 g3099__5477(.A (n_19), .B (n_18), .Y (n_53));
+  XNOR2X1 g3100__2398(.A (n_17), .B (n_16), .Y (n_65));
+  XNOR2X1 g3101__5107(.A (n_5), .B (n_4), .Y (n_38));
+  XNOR2X1 g3097__6260(.A (n_15), .B (n_14), .Y (n_69));
+  XNOR2X1 g3104__4319(.A (n_13), .B (n_12), .Y (n_47));
+  XNOR2X1 g3107__8428(.A (n_9), .B (n_8), .Y (n_39));
+  XNOR2X1 g3102__5526(.A (n_7), .B (n_6), .Y (n_147));
+  NOR2XL g3111__6783(.A (n_11), .B (n_10), .Y (n_40));
+  NOR2XL g3109__3680(.A (n_9), .B (n_8), .Y (n_35));
+  NOR2XL g3110__1617(.A (n_7), .B (n_6), .Y (n_24));
+  NOR2XL g3112__2802(.A (n_5), .B (n_4), .Y (n_42));
+  NOR2XL g3113__1705(.A (n_3), .B (n_2), .Y (n_77));
+  INVXL g3145(.A (n_1), .Y (n_111));
+  AND2X2 g3146__5122(.A (y[0]), .B (x[0]), .Y (z[0]));
+  NAND2XL g3154__8246(.A (y[6]), .B (x[3]), .Y (n_100));
+  NAND2XL g3163__7098(.A (y[5]), .B (x[1]), .Y (n_62));
+  NAND2XL g3149__6131(.A (y[7]), .B (x[3]), .Y (n_133));
+  NAND2XL g3167__1881(.A (y[2]), .B (x[6]), .Y (n_5));
+  NAND2XL g3166__5115(.A (y[7]), .B (x[4]), .Y (n_131));
+  NAND2XL g3114__7482(.A (y[3]), .B (x[3]), .Y (n_20));
+  NAND2XL g3137__4733(.A (y[7]), .B (x[6]), .Y (n_11));
+  NAND2XL g3147__6161(.A (y[0]), .B (x[1]), .Y (n_2));
+  NAND2XL g3157__9315(.A (y[3]), .B (x[2]), .Y (n_25));
+  NAND2XL g3138__9945(.A (y[7]), .B (x[2]), .Y (n_129));
+  NAND2XL g3143__2883(.A (y[4]), .B (x[4]), .Y (n_13));
+  NAND2XL g3160__2346(.A (y[3]), .B (x[7]), .Y (n_22));
+  NAND2XL g3155__1666(.A (y[3]), .B (x[4]), .Y (n_16));
+  NAND2XL g3173__7410(.A (y[1]), .B (x[5]), .Y (n_30));
+  NAND2XL g3119__6417(.A (y[6]), .B (x[5]), .Y (n_98));
+  NAND2XL g3141__5477(.A (y[6]), .B (x[4]), .Y (n_106));
+  NAND2XL g3172__2398(.A (y[0]), .B (x[5]), .Y (n_14));
+  NAND2XL g3171__5107(.A (y[7]), .B (x[1]), .Y (n_128));
+  NAND2XL g3156__6260(.A (y[3]), .B (x[1]), .Y (n_8));
+  NAND2XL g3126__4319(.A (y[3]), .B (x[6]), .Y (n_18));
+  NAND2XL g3175__8428(.A (y[1]), .B (x[7]), .Y (n_4));
+  NAND2XL g3148__5526(.A (y[1]), .B (x[0]), .Y (n_3));
+  NAND2XL g3161__6783(.A (y[1]), .B (x[6]), .Y (n_32));
+  NAND2XL g3117__3680(.A (y[6]), .B (x[2]), .Y (n_104));
+  NAND2XL g3162__1617(.A (y[7]), .B (x[0]), .Y (n_126));
+  NAND2XL g3159__2802(.A (y[5]), .B (x[5]), .Y (n_58));
+  NAND2XL g3150__1705(.A (y[5]), .B (x[6]), .Y (n_7));
+  NAND2XL g3174__5122(.A (y[0]), .B (x[2]), .Y (n_36));
+  NAND2XL g3134__8246(.A (y[6]), .B (x[1]), .Y (n_102));
+  NAND2XL g3133__7098(.A (y[4]), .B (x[5]), .Y (n_19));
+  NAND2XL g3123__6131(.A (y[4]), .B (x[6]), .Y (n_23));
+  NAND2XL g3170__1881(.A (y[0]), .B (x[4]), .Y (n_27));
+  NAND2XL g3165__5115(.A (y[0]), .B (x[3]), .Y (n_33));
+  NAND2XL g3152__7482(.A (y[1]), .B (x[4]), .Y (n_15));
+  NAND2XL g3164__4733(.A (y[5]), .B (x[3]), .Y (n_48));
+  NAND2XL g3136__6161(.A (y[2]), .B (x[3]), .Y (n_70));
+  NAND2XL g3128__9315(.A (y[6]), .B (x[6]), .Y (n_67));
+  NAND2XL g3132__9945(.A (y[4]), .B (x[3]), .Y (n_17));
+  NAND2XL g3130__2883(.A (y[2]), .B (x[4]), .Y (n_64));
+  NAND2XL g3144__2346(.A (y[5]), .B (x[0]), .Y (n_52));
+  NAND2XL g3120__1666(.A (y[1]), .B (x[1]), .Y (n_37));
+  NAND2XL g3116__7410(.A (y[2]), .B (x[5]), .Y (n_50));
+  NAND2XL g3139__6417(.A (y[4]), .B (x[0]), .Y (n_9));
+  NAND2XL g3121__5477(.A (y[4]), .B (x[1]), .Y (n_26));
+  NAND2XL g3176__2398(.A (y[7]), .B (x[5]), .Y (n_82));
+  NAND2XL g3153__5107(.A (y[4]), .B (x[2]), .Y (n_21));
+  NAND2XL g3118__6260(.A (y[1]), .B (x[2]), .Y (n_34));
+  NAND2XL g3131__4319(.A (y[5]), .B (x[2]), .Y (n_66));
+  NAND2XL g3135__8428(.A (y[2]), .B (x[0]), .Y (n_46));
+  NAND2XL g3168__5526(.A (y[2]), .B (x[1]), .Y (n_60));
+  NAND2XL g3158__6783(.A (y[0]), .B (x[7]), .Y (n_31));
+  NAND2XL g3129__3680(.A (y[0]), .B (x[6]), .Y (n_29));
+  NAND2XL g3124__1617(.A (y[2]), .B (x[2]), .Y (n_56));
+  NAND2XL g3140__2802(.A (y[4]), .B (x[7]), .Y (n_6));
+  NAND2XL g3127__1705(.A (y[5]), .B (x[4]), .Y (n_54));
+  NAND2XL g3169__5122(.A (y[3]), .B (x[0]), .Y (n_1));
+  NAND2XL g3151__8246(.A (y[3]), .B (x[5]), .Y (n_12));
+  NAND2XL g3142__7098(.A (y[1]), .B (x[3]), .Y (n_28));
+  NAND2XL g3115__6131(.A (y[6]), .B (x[7]), .Y (n_10));
+  NAND2XL g3122__1881(.A (y[6]), .B (x[0]), .Y (n_79));
+  NAND2XL g3125__5115(.A (y[5]), .B (x[7]), .Y (n_109));
+endmodule
+
+@file(exic1.tcl) 29: 			syn_opt
+Info    : Incrementally optimizing. [SYNTH-7]
+        : Incrementally optimizing 'WA_8' using 'high' effort.
+ 
+Incremental optimization status
+===============================
+                                    Worst     Total - - DRC Totals - -
+                           Total  Weighted     Neg       Max     Max  
+Operation                   Area  Neg Slk     Slack      Cap   Fanout 
+ init_iopt                  1451        0         0         1        0
+-------------------------------------------------------------------------------
+ const_prop                 1451        0         0         1        0
+-------------------------------------------------------------------------------
+ hi_fo_buf                  1451        0         0         1        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+       hi_fo_buf         0  (        0 /        0 )  0.00
+
+ 
+Incremental optimization status
+===============================
+                                    Worst     Total - - DRC Totals - -
+                           Total  Weighted     Neg       Max     Max  
+Operation                   Area  Neg Slk     Slack      Cap   Fanout 
+ init_delay                 1451        0         0         1        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+        crit_msz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+       crit_slew         0  (        0 /        0 )  0.00
+        setup_dn         0  (        0 /        0 )  0.00
+    plc_bal_star         0  (        0 /        0 )  0.00
+     drc_buftimb         0  (        0 /        0 )  0.00
+          plc_st         0  (        0 /        0 )  0.00
+    plc_st_fence         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+      plc_laf_st         0  (        0 /        0 )  0.00
+ plc_laf_st_fence         0  (        0 /        0 )  0.00
+     drc_buftims         0  (        0 /        0 )  0.00
+   plc_laf_lo_st         0  (        0 /        0 )  0.00
+       plc_lo_st         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+       crit_swap         0  (        0 /        0 )  0.00
+       mux2_swap         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       load_swap         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+        setup_dn         0  (        0 /        0 )  0.00
+       load_isol         0  (        0 /        0 )  0.00
+       load_isol         0  (        0 /        0 )  0.00
+        move_for         0  (        0 /        0 )  0.00
+        move_for         0  (        0 /        0 )  0.00
+          rem_bi         0  (        0 /        0 )  0.00
+         offload         0  (        0 /        0 )  0.00
+          rem_bi         0  (        0 /        0 )  0.00
+         offload         0  (        0 /        0 )  0.00
+           phase         0  (        0 /        0 )  0.00
+        in_phase         0  (        0 /        0 )  0.00
+       merge_bit         0  (        0 /        0 )  0.00
+     merge_idrvr         0  (        0 /        0 )  0.00
+     merge_iload         0  (        0 /        0 )  0.00
+    merge_idload         0  (        0 /        0 )  0.00
+      merge_drvr         0  (        0 /        0 )  0.00
+      merge_load         0  (        0 /        0 )  0.00
+          decomp         0  (        0 /        0 )  0.00
+        p_decomp         0  (        0 /        0 )  0.00
+        levelize         0  (        0 /        0 )  0.00
+        mb_split         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+      mux_retime         0  (        0 /        0 )  0.00
+         buf2inv         0  (        0 /        0 )  0.00
+             exp         0  (        0 /        0 )  0.00
+       gate_deco         0  (        0 /        0 )  0.00
+       gcomp_tim         0  (        0 /        0 )  0.00
+  inv_pair_2_buf         0  (        0 /        0 )  0.00
+
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+         crr_220         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_200         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_300         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_400         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_111         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_210         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_110         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_101         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_201         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_211         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+        crit_msz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+       crit_slew         0  (        0 /        0 )  0.00
+        setup_dn         0  (        0 /        0 )  0.00
+    plc_bal_star         0  (        0 /        0 )  0.00
+     drc_buftimb         0  (        0 /        0 )  0.00
+          plc_st         0  (        0 /        0 )  0.00
+    plc_st_fence         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+      plc_laf_st         0  (        0 /        0 )  0.00
+ plc_laf_st_fence         0  (        0 /        0 )  0.00
+     drc_buftims         0  (        0 /        0 )  0.00
+       plc_lo_st         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+       crit_swap         0  (        0 /        0 )  0.00
+       mux2_swap         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       load_swap         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+        setup_dn         0  (        0 /        0 )  0.00
+       load_isol         0  (        0 /        0 )  0.00
+       load_isol         0  (        0 /        0 )  0.00
+        move_for         0  (        0 /        0 )  0.00
+        move_for         0  (        0 /        0 )  0.00
+          rem_bi         0  (        0 /        0 )  0.00
+         offload         0  (        0 /        0 )  0.00
+          rem_bi         0  (        0 /        0 )  0.00
+         offload         0  (        0 /        0 )  0.00
+       merge_bit         0  (        0 /        0 )  0.00
+     merge_idrvr         0  (        0 /        0 )  0.00
+     merge_iload         0  (        0 /        0 )  0.00
+    merge_idload         0  (        0 /        0 )  0.00
+      merge_drvr         0  (        0 /        0 )  0.00
+      merge_load         0  (        0 /        0 )  0.00
+           phase         0  (        0 /        0 )  0.00
+          decomp         0  (        0 /        0 )  0.00
+        p_decomp         0  (        0 /        0 )  0.00
+        levelize         0  (        0 /        0 )  0.00
+        mb_split         0  (        0 /        0 )  0.00
+        in_phase         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+      mux_retime         0  (        0 /        0 )  0.00
+         buf2inv         0  (        0 /        0 )  0.00
+             exp         0  (        0 /        0 )  0.00
+       gate_deco         0  (        0 /        0 )  0.00
+       gcomp_tim         0  (        0 /        0 )  0.00
+  inv_pair_2_buf         0  (        0 /        0 )  0.00
+ init_drc                   1451        0         0         1        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+          plc_st         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+        drc_bufs         0  (        0 /        0 )  0.00
+        drc_fopt         0  (        0 /        0 )  0.00
+        drc_bufb         0  (        0 /        0 )  0.00
+      simple_buf         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+       crit_slew         0  (        0 /        0 )  0.00
+
+ incr_max_cap               1462        0         0         0        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+          plc_st         1  (        0 /        0 )  0.00
+        plc_star         1  (        0 /        0 )  0.00
+      drc_buf_sp         2  (        0 /        1 )  0.00
+        drc_bufs         2  (        1 /        1 )  0.00
+        drc_fopt         0  (        0 /        0 )  0.00
+        drc_bufb         0  (        0 /        0 )  0.00
+      simple_buf         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+          plc_st         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+      drc_buf_sp         0  (        0 /        0 )  0.00
+        drc_bufs         0  (        0 /        0 )  0.00
+        drc_fopt         0  (        0 /        0 )  0.00
+        drc_bufb         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+
+ init_tns                   1462        0         0         0        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+            fopt         0  (        0 /        0 )  0.00
+    plc_bal_star         0  (        0 /        0 )  0.00
+     drc_buftimb         0  (        0 /        0 )  0.00
+     drc_buftims         0  (        0 /        0 )  0.00
+        crit_msz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+   plc_laf_lo_st         0  (        0 /        0 )  0.00
+       plc_lo_st         0  (        0 /        0 )  0.00
+       crit_swap         0  (        0 /        0 )  0.00
+       mux2_swap         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       load_swap         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+        setup_dn         0  (        0 /        0 )  0.00
+       load_isol         0  (        0 /        0 )  0.00
+       load_isol         0  (        0 /        0 )  0.00
+        move_for         0  (        0 /        0 )  0.00
+        move_for         0  (        0 /        0 )  0.00
+          rem_bi         0  (        0 /        0 )  0.00
+         offload         0  (        0 /        0 )  0.00
+          rem_bi         0  (        0 /        0 )  0.00
+         offload         0  (        0 /        0 )  0.00
+       merge_bit         0  (        0 /        0 )  0.00
+     merge_idrvr         0  (        0 /        0 )  0.00
+     merge_iload         0  (        0 /        0 )  0.00
+    merge_idload         0  (        0 /        0 )  0.00
+      merge_drvr         0  (        0 /        0 )  0.00
+      merge_load         0  (        0 /        0 )  0.00
+           phase         0  (        0 /        0 )  0.00
+          decomp         0  (        0 /        0 )  0.00
+        p_decomp         0  (        0 /        0 )  0.00
+        levelize         0  (        0 /        0 )  0.00
+        mb_split         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+      mux_retime         0  (        0 /        0 )  0.00
+       crr_local         0  (        0 /        0 )  0.00
+         buf2inv         0  (        0 /        0 )  0.00
+
+ init_area                  1462        0         0         0        0
+ rem_buf                    1457        0         0         0        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+           undup         0  (        0 /        0 )  0.00
+         rem_buf         1  (        1 /        1 )  0.00
+         rem_inv         0  (        0 /        0 )  0.00
+        merge_bi         0  (        0 /        0 )  0.00
+      rem_inv_qb         0  (        0 /        0 )  0.00
+    seq_res_area         0  (        0 /        0 )  0.00
+        io_phase         0  (        0 /        0 )  0.00
+       gate_comp         6  (        0 /        0 )  0.02
+       gcomp_mog        35  (        0 /        0 )  0.13
+       glob_area        20  (        0 /       20 )  0.01
+       area_down        16  (        0 /        0 )  0.01
+      size_n_buf         0  (        0 /        0 )  0.00
+  gate_deco_area         0  (        0 /        0 )  0.00
+         rem_buf         0  (        0 /        0 )  0.00
+         rem_inv         0  (        0 /        0 )  0.00
+        merge_bi         0  (        0 /        0 )  0.00
+      rem_inv_qb         0  (        0 /        0 )  0.00
+
+ 
+Incremental optimization status
+===============================
+                                    Worst     Total - - DRC Totals - -
+                           Total  Weighted     Neg       Max     Max  
+Operation                   Area  Neg Slk     Slack      Cap   Fanout 
+ init_delay                 1457        0         0         0        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+         crr_220         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_200         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_300         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_400         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_111         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_210         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_110         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_101         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_201         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+         crr_211         0  (        0 /        0 )  0.00
+        crr_glob         0  (        0 /        0 )  0.00
+        crit_msz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+       crit_slew         0  (        0 /        0 )  0.00
+        setup_dn         0  (        0 /        0 )  0.00
+    plc_bal_star         0  (        0 /        0 )  0.00
+     drc_buftimb         0  (        0 /        0 )  0.00
+          plc_st         0  (        0 /        0 )  0.00
+    plc_st_fence         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+      plc_laf_st         0  (        0 /        0 )  0.00
+ plc_laf_st_fence         0  (        0 /        0 )  0.00
+     drc_buftims         0  (        0 /        0 )  0.00
+       plc_lo_st         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+       crit_swap         0  (        0 /        0 )  0.00
+       mux2_swap         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       load_swap         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+        setup_dn         0  (        0 /        0 )  0.00
+       load_isol         0  (        0 /        0 )  0.00
+       load_isol         0  (        0 /        0 )  0.00
+        move_for         0  (        0 /        0 )  0.00
+        move_for         0  (        0 /        0 )  0.00
+          rem_bi         0  (        0 /        0 )  0.00
+         offload         0  (        0 /        0 )  0.00
+          rem_bi         0  (        0 /        0 )  0.00
+         offload         0  (        0 /        0 )  0.00
+       merge_bit         0  (        0 /        0 )  0.00
+     merge_idrvr         0  (        0 /        0 )  0.00
+     merge_iload         0  (        0 /        0 )  0.00
+    merge_idload         0  (        0 /        0 )  0.00
+      merge_drvr         0  (        0 /        0 )  0.00
+      merge_load         0  (        0 /        0 )  0.00
+           phase         0  (        0 /        0 )  0.00
+          decomp         0  (        0 /        0 )  0.00
+        p_decomp         0  (        0 /        0 )  0.00
+        levelize         0  (        0 /        0 )  0.00
+        mb_split         0  (        0 /        0 )  0.00
+        in_phase         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+      mux_retime         0  (        0 /        0 )  0.00
+         buf2inv         0  (        0 /        0 )  0.00
+             exp         0  (        0 /        0 )  0.00
+       gate_deco         0  (        0 /        0 )  0.00
+       gcomp_tim         0  (        0 /        0 )  0.00
+  inv_pair_2_buf         0  (        0 /        0 )  0.00
+ init_drc                   1457        0         0         0        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+          plc_st         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+        drc_bufs         0  (        0 /        0 )  0.00
+        drc_fopt         0  (        0 /        0 )  0.00
+        drc_bufb         0  (        0 /        0 )  0.00
+      simple_buf         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+       crit_slew         0  (        0 /        0 )  0.00
+
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+          plc_st         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+        drc_bufs         0  (        0 /        0 )  0.00
+        drc_fopt         0  (        0 /        0 )  0.00
+        drc_bufb         0  (        0 /        0 )  0.00
+      simple_buf         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+          plc_st         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+        drc_bufs         0  (        0 /        0 )  0.00
+        drc_fopt         0  (        0 /        0 )  0.00
+        drc_bufb         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+
+ init_tns                   1457        0         0         0        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+            fopt         0  (        0 /        0 )  0.00
+    plc_bal_star         0  (        0 /        0 )  0.00
+     drc_buftimb         0  (        0 /        0 )  0.00
+     drc_buftims         0  (        0 /        0 )  0.00
+        crit_msz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+   plc_laf_lo_st         0  (        0 /        0 )  0.00
+       plc_lo_st         0  (        0 /        0 )  0.00
+       crit_swap         0  (        0 /        0 )  0.00
+       mux2_swap         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       load_swap         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+        setup_dn         0  (        0 /        0 )  0.00
+       load_isol         0  (        0 /        0 )  0.00
+       load_isol         0  (        0 /        0 )  0.00
+        move_for         0  (        0 /        0 )  0.00
+        move_for         0  (        0 /        0 )  0.00
+          rem_bi         0  (        0 /        0 )  0.00
+         offload         0  (        0 /        0 )  0.00
+          rem_bi         0  (        0 /        0 )  0.00
+         offload         0  (        0 /        0 )  0.00
+       merge_bit         0  (        0 /        0 )  0.00
+     merge_idrvr         0  (        0 /        0 )  0.00
+     merge_iload         0  (        0 /        0 )  0.00
+    merge_idload         0  (        0 /        0 )  0.00
+      merge_drvr         0  (        0 /        0 )  0.00
+      merge_load         0  (        0 /        0 )  0.00
+           phase         0  (        0 /        0 )  0.00
+          decomp         0  (        0 /        0 )  0.00
+        p_decomp         0  (        0 /        0 )  0.00
+        levelize         0  (        0 /        0 )  0.00
+        mb_split         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+      mux_retime         0  (        0 /        0 )  0.00
+       crr_local         0  (        0 /        0 )  0.00
+         buf2inv         0  (        0 /        0 )  0.00
+
+ init_area                  1457        0         0         0        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+           undup         0  (        0 /        0 )  0.00
+         rem_buf         0  (        0 /        0 )  0.00
+         rem_inv         0  (        0 /        0 )  0.00
+        merge_bi         0  (        0 /        0 )  0.00
+      rem_inv_qb         0  (        0 /        0 )  0.00
+        io_phase         0  (        0 /        0 )  0.00
+       gate_comp         6  (        0 /        0 )  0.02
+       gcomp_mog        35  (        0 /        0 )  0.13
+       glob_area        20  (        0 /       20 )  0.01
+       area_down        16  (        0 /        0 )  0.01
+      size_n_buf         0  (        0 /        0 )  0.00
+  gate_deco_area         0  (        0 /        0 )  0.00
+
+ 
+Incremental optimization status
+===============================
+                                    Worst     Total - - DRC Totals - -
+                           Total  Weighted     Neg       Max     Max  
+Operation                   Area  Neg Slk     Slack      Cap   Fanout 
+ init_delay                 1457        0         0         0        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+        crit_msz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+       crit_slew         0  (        0 /        0 )  0.00
+        setup_dn         0  (        0 /        0 )  0.00
+    plc_bal_star         0  (        0 /        0 )  0.00
+     drc_buftimb         0  (        0 /        0 )  0.00
+          plc_st         0  (        0 /        0 )  0.00
+    plc_st_fence         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+      plc_laf_st         0  (        0 /        0 )  0.00
+ plc_laf_st_fence         0  (        0 /        0 )  0.00
+     drc_buftims         0  (        0 /        0 )  0.00
+   plc_laf_lo_st         0  (        0 /        0 )  0.00
+       plc_lo_st         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+       crit_swap         0  (        0 /        0 )  0.00
+       mux2_swap         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       load_swap         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+        setup_dn         0  (        0 /        0 )  0.00
+       load_isol         0  (        0 /        0 )  0.00
+       load_isol         0  (        0 /        0 )  0.00
+        move_for         0  (        0 /        0 )  0.00
+        move_for         0  (        0 /        0 )  0.00
+          rem_bi         0  (        0 /        0 )  0.00
+         offload         0  (        0 /        0 )  0.00
+          rem_bi         0  (        0 /        0 )  0.00
+         offload         0  (        0 /        0 )  0.00
+           phase         0  (        0 /        0 )  0.00
+        in_phase         0  (        0 /        0 )  0.00
+       merge_bit         0  (        0 /        0 )  0.00
+     merge_idrvr         0  (        0 /        0 )  0.00
+     merge_iload         0  (        0 /        0 )  0.00
+    merge_idload         0  (        0 /        0 )  0.00
+      merge_drvr         0  (        0 /        0 )  0.00
+      merge_load         0  (        0 /        0 )  0.00
+          decomp         0  (        0 /        0 )  0.00
+        p_decomp         0  (        0 /        0 )  0.00
+        levelize         0  (        0 /        0 )  0.00
+        mb_split         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+      mux_retime         0  (        0 /        0 )  0.00
+         buf2inv         0  (        0 /        0 )  0.00
+             exp         0  (        0 /        0 )  0.00
+       gate_deco         0  (        0 /        0 )  0.00
+       gcomp_tim         0  (        0 /        0 )  0.00
+  inv_pair_2_buf         0  (        0 /        0 )  0.00
+
+ init_drc                   1457        0         0         0        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+          plc_st         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+        drc_bufs         0  (        0 /        0 )  0.00
+        drc_fopt         0  (        0 /        0 )  0.00
+        drc_bufb         0  (        0 /        0 )  0.00
+      simple_buf         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+       crit_slew         0  (        0 /        0 )  0.00
+
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+          plc_st         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+        drc_bufs         0  (        0 /        0 )  0.00
+        drc_fopt         0  (        0 /        0 )  0.00
+        drc_bufb         0  (        0 /        0 )  0.00
+      simple_buf         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+          plc_st         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+        drc_bufs         0  (        0 /        0 )  0.00
+        drc_fopt         0  (        0 /        0 )  0.00
+        drc_bufb         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+
+==================================
+Stage : incr_opt 
+==================================
+  =================
+   Message Summary
+  =================
+--------------------------------------------------------------------------------
+|   Id    |  Sev   |Count |                   Message Text                     |
+--------------------------------------------------------------------------------
+| CFM-1   |Info    |    1 |Wrote dofile.                                       |
+| CFM-5   |Info    |    1 |Wrote formal verification information.              |
+| CPI-506 |Warning |    1 |Command 'commit_power_intent' cannot proceed as     |
+|         |        |      | there is no power intent loaded.                   |
+| PA-7    |Info    |    4 |Resetting power analysis results.                   |
+|         |        |      |All computed switching activities are removed.      |
+| SYNTH-5 |Info    |    1 |Done mapping.                                       |
+| SYNTH-7 |Info    |    1 |Incrementally optimizing.                           |
+--------------------------------------------------------------------------------
+Info    : Done incrementally optimizing. [SYNTH-8]
+        : Done incrementally optimizing 'WA_8'.
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   syn_opt
+@file(exic1.tcl) 30: 			write_hdl
+
+// Generated by Cadence Genus(TM) Synthesis Solution 21.14-s082_1
+// Generated on: Sep  3 2024 10:25:03 IST (Sep  3 2024 04:55:03 UTC)
+
+// Verification Directory fv/WA_8 
+
+module WA_8(x, y, z);
+  input [7:0] x, y;
+  output [16:0] z;
+  wire [7:0] x, y;
+  wire [16:0] z;
+  wire n_1, n_2, n_3, n_4, n_5, n_6, n_7, n_8;
+  wire n_9, n_10, n_11, n_12, n_13, n_14, n_15, n_16;
+  wire n_17, n_18, n_19, n_20, n_21, n_22, n_23, n_24;
+  wire n_25, n_26, n_27, n_28, n_29, n_30, n_31, n_32;
+  wire n_33, n_34, n_35, n_36, n_37, n_38, n_39, n_40;
+  wire n_41, n_42, n_44, n_45, n_46, n_47, n_48, n_49;
+  wire n_50, n_51, n_52, n_53, n_54, n_55, n_56, n_57;
+  wire n_58, n_59, n_60, n_61, n_62, n_63, n_64, n_65;
+  wire n_66, n_67, n_68, n_69, n_70, n_71, n_72, n_73;
+  wire n_74, n_75, n_76, n_77, n_78, n_79, n_80, n_81;
+  wire n_82, n_83, n_84, n_85, n_86, n_87, n_88, n_89;
+  wire n_90, n_91, n_92, n_93, n_94, n_95, n_96, n_98;
+  wire n_99, n_100, n_101, n_102, n_103, n_104, n_105, n_106;
+  wire n_107, n_108, n_109, n_110, n_111, n_112, n_113, n_114;
+  wire n_115, n_116, n_117, n_118, n_119, n_120, n_121, n_122;
+  wire n_123, n_124, n_125, n_126, n_127, n_128, n_129, n_130;
+  wire n_131, n_132, n_133, n_134, n_135, n_136, n_137, n_138;
+  wire n_139, n_140, n_141, n_142, n_143, n_144, n_145, n_146;
+  wire n_147, n_148, n_149, n_150, n_151, n_152, n_153, n_154;
+  wire n_156, n_157, n_158, n_159, n_160, n_161, n_162, n_163;
+  wire n_164, n_165, n_166, n_167, n_168, n_169, n_170, n_171;
+  wire n_172, n_173, n_175, n_176, n_177, n_178, n_179, n_180;
+  wire n_181, n_182, n_183, n_184, n_185, n_186, n_187, n_188;
+  wire n_189, n_190, n_191, n_192, n_193, n_194, n_195, n_196;
+  wire n_197, n_198, n_199, n_200, n_201, n_202, n_203, n_204;
+  wire n_205, n_206, n_207, n_208, n_209, n_210, n_211, n_212;
+  wire n_213, n_214, n_216, n_217, n_218, n_219, n_220, n_221;
+  wire n_222, n_223, n_224, n_225, n_226, n_227, n_228, n_229;
+  wire n_231, n_232, n_234, n_235, n_237, n_238, n_240, n_241;
+  wire n_243, n_244, n_246, n_247, n_249, n_250, n_252, n_253;
+  wire n_255;
+  assign z[16] = 1'b0;
+  OR2X2 g2920__2398(.A (n_40), .B (n_255), .Y (z[15]));
+  OAI22XL g2921__5107(.A0 (n_253), .A1 (n_252), .B0 (n_178), .B1
+       (n_179), .Y (n_255));
+  CLKXOR2X2 g2922__6260(.A (n_253), .B (n_252), .Y (z[14]));
+  CLKXOR2X2 g2924__4319(.A (n_249), .B (n_250), .Y (z[13]));
+  AOI22XL g2923__8428(.A0 (n_250), .A1 (n_249), .B0 (n_212), .B1
+       (n_211), .Y (n_253));
+  OAI22XL g2925__5526(.A0 (n_246), .A1 (n_247), .B0 (n_217), .B1
+       (n_216), .Y (n_250));
+  CLKXOR2X2 g2926__6783(.A (n_247), .B (n_246), .Y (z[12]));
+  CLKXOR2X2 g2928__3680(.A (n_243), .B (n_244), .Y (z[11]));
+  AOI22XL g2927__1617(.A0 (n_244), .A1 (n_243), .B0 (n_225), .B1
+       (n_224), .Y (n_246));
+  OAI22XL g2929__2802(.A0 (n_240), .A1 (n_241), .B0 (n_223), .B1
+       (n_222), .Y (n_244));
+  CLKXOR2X2 g2930__1705(.A (n_241), .B (n_240), .Y (z[10]));
+  CLKXOR2X2 g2932__5122(.A (n_237), .B (n_238), .Y (z[9]));
+  AOI22XL g2931__8246(.A0 (n_238), .A1 (n_237), .B0 (n_226), .B1
+       (n_227), .Y (n_240));
+  CLKXOR2X2 g2934__7098(.A (n_234), .B (n_235), .Y (z[8]));
+  OAI22XL g2933__6131(.A0 (n_235), .A1 (n_234), .B0 (n_220), .B1
+       (n_221), .Y (n_238));
+  CLKXOR2X2 g2936__1881(.A (n_231), .B (n_232), .Y (z[7]));
+  AOI22XL g2935__5115(.A0 (n_232), .A1 (n_231), .B0 (n_218), .B1
+       (n_219), .Y (n_235));
+  CLKXOR2X2 g2943__7482(.A (n_229), .B (n_228), .Y (z[6]));
+  OAI22XL g2937__4733(.A0 (n_229), .A1 (n_228), .B0 (n_213), .B1
+       (n_214), .Y (n_231));
+  MXI2XL g2939__6161(.A (n_210), .B (n_227), .S0 (n_226), .Y (n_237));
+  MXI2XL g2941__9315(.A (n_209), .B (n_225), .S0 (n_224), .Y (n_243));
+  XNOR2X1 g2938__9945(.A (n_223), .B (n_222), .Y (n_241));
+  XNOR2X1 g2940__2883(.A (n_221), .B (n_220), .Y (n_234));
+  MXI2XL g2942__2346(.A (n_195), .B (n_219), .S0 (n_218), .Y (n_232));
+  XNOR2X1 g2952__1666(.A (n_217), .B (n_216), .Y (n_247));
+  CLKXOR2X2 g2956__7410(.A (n_203), .B (n_204), .Y (z[5]));
+  XNOR2X1 g2950__6417(.A (n_214), .B (n_213), .Y (n_229));
+  MXI2XL g2957__5477(.A (n_196), .B (n_212), .S0 (n_211), .Y (n_249));
+  INVXL g2944(.A (n_210), .Y (n_227));
+  INVXL g2947(.A (n_209), .Y (n_225));
+  XNOR2X1 g2953__2398(.A (n_205), .B (n_206), .Y (n_220));
+  CLKXOR2X1 g2951__5107(.A (n_199), .B (n_200), .Y (n_226));
+  AOI22XL g2949__6260(.A0 (n_207), .A1 (n_208), .B0 (n_190), .B1
+       (n_189), .Y (n_209));
+  XNOR2X1 g2954__4319(.A (n_208), .B (n_207), .Y (n_222));
+  AOI22XL g2945__8428(.A0 (n_206), .A1 (n_205), .B0 (n_191), .B1
+       (n_192), .Y (n_210));
+  OR2X1 g2959__5526(.A (n_204), .B (n_203), .Y (n_228));
+  CLKXOR2X1 g2955__6783(.A (n_201), .B (n_202), .Y (n_218));
+  AOI22XL g2946__3680(.A0 (n_202), .A1 (n_201), .B0 (n_187), .B1
+       (n_188), .Y (n_221));
+  AOI22XL g2948__1617(.A0 (n_200), .A1 (n_199), .B0 (n_194), .B1
+       (n_193), .Y (n_223));
+  AOI22XL g2960__2802(.A0 (n_197), .A1 (n_198), .B0 (n_180), .B1
+       (n_181), .Y (n_217));
+  CLKXOR2X1 g2970__1705(.A (n_198), .B (n_197), .Y (n_224));
+  INVXL g2964(.A (n_196), .Y (n_212));
+  AOI21XL g2966__5122(.A0 (n_183), .A1 (n_182), .B0 (n_184), .Y
+       (n_213));
+  AOI21XL g2971__8246(.A0 (n_176), .A1 (n_175), .B0 (n_177), .Y
+       (n_203));
+  INVXL g2958(.A (n_195), .Y (n_219));
+  CLKXOR2X1 g2961__7098(.A (n_194), .B (n_193), .Y (n_200));
+  CLKXOR2X1 g2962__6131(.A (n_192), .B (n_191), .Y (n_206));
+  AOI22XL g2967__1881(.A0 (n_185), .A1 (n_186), .B0 (n_170), .B1
+       (n_171), .Y (n_196));
+  CLKXOR2X1 g2965__5115(.A (n_190), .B (n_189), .Y (n_207));
+  CLKXOR2X1 g2963__7482(.A (n_188), .B (n_187), .Y (n_202));
+  XNOR2X1 g2973__4733(.A (n_186), .B (n_185), .Y (n_216));
+  NOR2XL g2968__6161(.A (n_183), .B (n_182), .Y (n_184));
+  CLKXOR2X1 g2983__9315(.A (n_181), .B (n_180), .Y (n_197));
+  XNOR2X1 g2980__9945(.A (n_179), .B (n_178), .Y (n_252));
+  NOR2XL g2972__2883(.A (n_176), .B (n_175), .Y (n_177));
+  NAND2BXL g2969__2346(.AN (n_182), .B (n_183), .Y (n_195));
+  NAND2BXL g2974__1666(.AN (n_175), .B (n_176), .Y (n_214));
+  CLKXOR2X2 g2981__7410(.A (n_169), .B (n_168), .Y (z[4]));
+  OAI22XL g2977__6417(.A0 (n_173), .A1 (n_172), .B0 (n_154), .B1
+       (n_153), .Y (n_194));
+  OAI22XL g2978__5477(.A0 (n_162), .A1 (n_163), .B0 (n_149), .B1
+       (n_150), .Y (n_188));
+  OAI22XL g2979__2398(.A0 (n_167), .A1 (n_166), .B0 (n_144), .B1
+       (n_145), .Y (n_190));
+  CLKXOR2X1 g2982__5107(.A (n_173), .B (n_172), .Y (n_191));
+  CLKXOR2X1 g2984__6260(.A (n_165), .B (n_164), .Y (n_187));
+  MXI2XL g2985__4319(.A (n_160), .B (n_35), .S0 (n_161), .Y (n_175));
+  CLKXOR2X1 g2990__8428(.A (n_171), .B (n_170), .Y (n_185));
+  NAND2XL g2989__5526(.A (n_169), .B (n_168), .Y (n_204));
+  CLKXOR2X1 g2987__6783(.A (n_167), .B (n_166), .Y (n_193));
+  OAI22XL g2975__3680(.A0 (n_165), .A1 (n_164), .B0 (n_151), .B1
+       (n_152), .Y (n_192));
+  XNOR2X1 g2986__1617(.A (n_163), .B (n_162), .Y (n_182));
+  OAI22XL g2976__2802(.A0 (n_161), .A1 (n_160), .B0 (n_142), .B1
+       (n_143), .Y (n_183));
+  AOI22XL g2988__1705(.A0 (n_158), .A1 (n_159), .B0 (n_137), .B1
+       (n_138), .Y (n_178));
+  CLKXOR2X1 g2991__5122(.A (n_159), .B (n_158), .Y (n_211));
+  OAI21XL g3002__8246(.A0 (n_146), .A1 (n_147), .B0 (n_148), .Y
+       (n_181));
+  OAI22XL g2992__7098(.A0 (n_157), .A1 (n_156), .B0 (n_116), .B1
+       (n_115), .Y (n_180));
+  OAI21XL g2998__6131(.A0 (n_139), .A1 (n_140), .B0 (n_141), .Y
+       (n_168));
+  CLKXOR2X1 g3003__1881(.A (n_157), .B (n_156), .Y (n_189));
+  CLKXOR2X2 g3001__5115(.A (n_136), .B (n_135), .Y (z[3]));
+  XNOR2X1 g2993__7482(.A (n_154), .B (n_153), .Y (n_173));
+  XNOR2X1 g2994__4733(.A (n_152), .B (n_151), .Y (n_165));
+  XNOR2X1 g2995__6161(.A (n_150), .B (n_149), .Y (n_162));
+  NAND2XL g3004__9315(.A (n_147), .B (n_146), .Y (n_148));
+  XNOR2X1 g2996__9945(.A (n_145), .B (n_144), .Y (n_167));
+  NOR2BXL g3005__2883(.AN (n_146), .B (n_147), .Y (n_170));
+  XNOR2X1 g2997__2346(.A (n_143), .B (n_142), .Y (n_161));
+  NAND2XL g2999__1666(.A (n_140), .B (n_139), .Y (n_141));
+  NOR2BXL g3000__7410(.AN (n_140), .B (n_139), .Y (n_176));
+  MXI2XL g3007__6417(.A (n_41), .B (n_138), .S0 (n_137), .Y (n_158));
+  NOR2XL g3010__5477(.A (n_136), .B (n_135), .Y (n_169));
+  XNOR2X1 g3030__2398(.A (n_133), .B (n_134), .Y (n_156));
+  OAI22XL g3011__5107(.A0 (n_134), .A1 (n_133), .B0 (n_107), .B1
+       (n_106), .Y (n_198));
+  XNOR2X1 g3025__6260(.A (n_129), .B (n_130), .Y (n_166));
+  OAI21XL g3031__4319(.A0 (n_108), .A1 (n_109), .B0 (n_110), .Y
+       (n_171));
+  CLKXOR2X1 g3027__8428(.A (n_131), .B (n_132), .Y (n_146));
+  OAI22XL g3014__5526(.A0 (n_127), .A1 (n_128), .B0 (n_105), .B1
+       (n_104), .Y (n_199));
+  OAI22XL g3016__6783(.A0 (n_132), .A1 (n_131), .B0 (n_99), .B1 (n_98),
+       .Y (n_186));
+  OAI22XL g3017__3680(.A0 (n_125), .A1 (n_126), .B0 (n_103), .B1
+       (n_102), .Y (n_205));
+  OAI22XL g3018__1617(.A0 (n_130), .A1 (n_129), .B0 (n_101), .B1
+       (n_100), .Y (n_208));
+  XNOR2X1 g3019__2802(.A (n_128), .B (n_127), .Y (n_172));
+  XNOR2X1 g3022__1705(.A (n_126), .B (n_125), .Y (n_164));
+  XNOR2X1 g3024__5122(.A (n_123), .B (n_124), .Y (n_149));
+  XNOR2X1 g3026__8246(.A (n_119), .B (n_120), .Y (n_142));
+  AOI22XL g3008__7098(.A0 (n_124), .A1 (n_123), .B0 (n_93), .B1 (n_94),
+       .Y (n_152));
+  MXI2XL g3029__6131(.A (n_111), .B (n_1), .S0 (n_112), .Y (n_135));
+  AOI22XL g3006__1881(.A0 (n_121), .A1 (n_122), .B0 (n_89), .B1 (n_90),
+       .Y (n_143));
+  MXI2XL g3028__5115(.A (n_39), .B (n_122), .S0 (n_121), .Y (n_140));
+  XNOR2X1 g3023__7482(.A (n_118), .B (n_117), .Y (n_153));
+  AOI22XL g3009__4733(.A0 (n_120), .A1 (n_119), .B0 (n_91), .B1 (n_92),
+       .Y (n_150));
+  AOI22XL g3013__6161(.A0 (n_118), .A1 (n_117), .B0 (n_95), .B1 (n_96),
+       .Y (n_144));
+  AOI22XL g3015__9315(.A0 (n_113), .A1 (n_114), .B0 (n_85), .B1 (n_86),
+       .Y (n_154));
+  XNOR2X1 g3020__9945(.A (n_116), .B (n_115), .Y (n_157));
+  XNOR2X1 g3021__2883(.A (n_114), .B (n_113), .Y (n_151));
+  AOI22XL g3012__2346(.A0 (n_112), .A1 (n_111), .B0 (n_87), .B1 (n_88),
+       .Y (n_139));
+  NAND2XL g3032__1666(.A (n_109), .B (n_108), .Y (n_110));
+  NOR2BXL g3033__7410(.AN (n_108), .B (n_109), .Y (n_137));
+  MXI2XL g3036__6417(.A (n_107), .B (n_75), .S0 (n_106), .Y (n_134));
+  MXI2XL g3039__5477(.A (n_105), .B (n_71), .S0 (n_104), .Y (n_127));
+  MXI2XL g3041__2398(.A (n_103), .B (n_73), .S0 (n_102), .Y (n_125));
+  AOI21XL g3044__5107(.A0 (n_79), .A1 (n_78), .B0 (n_80), .Y (n_163));
+  MXI2XL g3045__6260(.A (n_101), .B (n_72), .S0 (n_100), .Y (n_130));
+  MXI2XL g3038__4319(.A (n_99), .B (n_74), .S0 (n_98), .Y (n_132));
+  CLKXOR2X2 g3050__8428(.A (n_77), .B (n_76), .Y (z[2]));
+  MXI2XL g3042__5526(.A (n_38), .B (n_96), .S0 (n_95), .Y (n_118));
+  CLKXOR2X1 g3040__6783(.A (n_94), .B (n_93), .Y (n_124));
+  AOI21XL g3034__3680(.A0 (n_84), .A1 (n_83), .B0 (n_42), .Y (n_116));
+  OAI22XL g3035__1617(.A0 (n_81), .A1 (n_82), .B0 (n_68), .B1 (n_67),
+       .Y (n_159));
+  CLKXOR2X1 g3043__2802(.A (n_92), .B (n_91), .Y (n_120));
+  CLKXOR2X1 g3046__1705(.A (n_90), .B (n_89), .Y (n_121));
+  CLKXOR2X1 g3047__5122(.A (n_88), .B (n_87), .Y (n_112));
+  CLKXOR2X1 g3037__8246(.A (n_86), .B (n_85), .Y (n_113));
+  MXI2XL g3052__7098(.A (n_84), .B (n_44), .S0 (n_83), .Y (n_145));
+  CLKXOR2X1 g3051__6131(.A (n_82), .B (n_81), .Y (n_108));
+  NOR2XL g3048__1881(.A (n_79), .B (n_78), .Y (n_80));
+  NOR2BXL g3049__5115(.AN (n_78), .B (n_79), .Y (n_201));
+  NAND2XL g3057__7482(.A (n_77), .B (n_76), .Y (n_136));
+  INVXL g3053(.A (n_75), .Y (n_107));
+  INVXL g3054(.A (n_74), .Y (n_99));
+  INVXL g3056(.A (n_73), .Y (n_103));
+  INVXL g3063(.A (n_72), .Y (n_101));
+  INVXL g3055(.A (n_71), .Y (n_105));
+  OAI22XL g3065__4733(.A0 (n_49), .A1 (n_50), .B0 (n_31), .B1 (n_32),
+       .Y (n_95));
+  OAI22XL g3059__6161(.A0 (n_57), .A1 (n_58), .B0 (n_22), .B1 (n_23),
+       .Y (n_74));
+  OAI22XL g3060__9315(.A0 (n_65), .A1 (n_66), .B0 (n_16), .B1 (n_17),
+       .Y (n_71));
+  OAI22XL g3061__9945(.A0 (n_69), .A1 (n_70), .B0 (n_14), .B1 (n_15),
+       .Y (n_94));
+  OAI22XL g3062__2883(.A0 (n_61), .A1 (n_62), .B0 (n_20), .B1 (n_21),
+       .Y (n_73));
+  OAI22XL g3064__2346(.A0 (n_63), .A1 (n_64), .B0 (n_29), .B1 (n_30),
+       .Y (n_86));
+  OAI22XL g3058__1666(.A0 (n_53), .A1 (n_54), .B0 (n_18), .B1 (n_19),
+       .Y (n_75));
+  OAI22XL g3066__7410(.A0 (n_55), .A1 (n_56), .B0 (n_27), .B1 (n_28),
+       .Y (n_92));
+  OAI22XL g3070__6417(.A0 (n_47), .A1 (n_48), .B0 (n_12), .B1 (n_13),
+       .Y (n_72));
+  OAI22XL g3068__5477(.A0 (n_59), .A1 (n_60), .B0 (n_33), .B1 (n_34),
+       .Y (n_90));
+  OAI22XL g3069__2398(.A0 (n_45), .A1 (n_46), .B0 (n_36), .B1 (n_37),
+       .Y (n_88));
+  OAI22XL g3067__5107(.A0 (n_51), .A1 (n_52), .B0 (n_25), .B1 (n_26),
+       .Y (n_78));
+  CLKXOR2X1 g3072__6260(.A (n_70), .B (n_69), .Y (n_91));
+  MXI2XL g3074__4319(.A (n_68), .B (n_24), .S0 (n_67), .Y (n_81));
+  CLKXOR2X1 g3075__8428(.A (n_66), .B (n_65), .Y (n_114));
+  CLKXOR2X1 g3076__5526(.A (n_64), .B (n_63), .Y (n_93));
+  CLKXOR2X1 g3077__6783(.A (n_62), .B (n_61), .Y (n_123));
+  CLKXOR2X1 g3079__3680(.A (n_60), .B (n_59), .Y (n_87));
+  XNOR2X1 g3080__1617(.A (n_58), .B (n_57), .Y (n_115));
+  CLKXOR2X1 g3081__2802(.A (n_56), .B (n_55), .Y (n_89));
+  CLKXOR2X1 g3082__1705(.A (n_54), .B (n_53), .Y (n_83));
+  CLKXOR2X1 g3083__5122(.A (n_52), .B (n_51), .Y (n_119));
+  CLKXOR2X1 g3084__8246(.A (n_50), .B (n_49), .Y (n_85));
+  CLKXOR2X1 g3085__7098(.A (n_48), .B (n_47), .Y (n_117));
+  CLKXOR2X1 g3086__6131(.A (n_46), .B (n_45), .Y (n_76));
+  INVXL g3071(.A (n_44), .Y (n_84));
+  AOI21X4 g3092__1881(.A0 (n_2), .A1 (n_3), .B0 (n_77), .Y (z[1]));
+  NAND3BXL g3073__5115(.AN (n_42), .B (y[2]), .C (x[7]), .Y (n_44));
+  INVXL g3089(.A (n_41), .Y (n_138));
+  NAND3BXL g3078__7482(.AN (n_40), .B (y[7]), .C (x[7]), .Y (n_179));
+  INVXL g3087(.A (n_39), .Y (n_122));
+  INVXL g3091(.A (n_38), .Y (n_96));
+  XNOR2X1 g3096__4733(.A (n_11), .B (n_10), .Y (n_41));
+  XNOR2X1 g3106__6161(.A (n_37), .B (n_36), .Y (n_45));
+  INVXL g3088(.A (n_35), .Y (n_160));
+  XNOR2X1 g3105__9315(.A (n_34), .B (n_33), .Y (n_59));
+  XNOR2X1 g3103__9945(.A (n_32), .B (n_31), .Y (n_49));
+  XNOR2X1 g3093__2883(.A (n_30), .B (n_29), .Y (n_63));
+  XNOR2X1 g3094__2346(.A (n_28), .B (n_27), .Y (n_55));
+  XNOR2X1 g3095__1666(.A (n_26), .B (n_25), .Y (n_51));
+  INVXL g3090(.A (n_24), .Y (n_68));
+  XNOR2X1 g3108__7410(.A (n_23), .B (n_22), .Y (n_57));
+  XNOR2X1 g3098__6417(.A (n_21), .B (n_20), .Y (n_61));
+  XNOR2X1 g3099__5477(.A (n_19), .B (n_18), .Y (n_53));
+  XNOR2X1 g3100__2398(.A (n_17), .B (n_16), .Y (n_65));
+  XNOR2X1 g3101__5107(.A (n_5), .B (n_4), .Y (n_38));
+  XNOR2X1 g3097__6260(.A (n_15), .B (n_14), .Y (n_69));
+  XNOR2X1 g3104__4319(.A (n_13), .B (n_12), .Y (n_47));
+  XNOR2X1 g3107__8428(.A (n_9), .B (n_8), .Y (n_39));
+  XNOR2X1 g3102__5526(.A (n_7), .B (n_6), .Y (n_147));
+  NOR2XL g3111__6783(.A (n_11), .B (n_10), .Y (n_40));
+  NOR2XL g3109__3680(.A (n_9), .B (n_8), .Y (n_35));
+  NOR2XL g3110__1617(.A (n_7), .B (n_6), .Y (n_24));
+  NOR2XL g3112__2802(.A (n_5), .B (n_4), .Y (n_42));
+  NOR2XL g3113__1705(.A (n_3), .B (n_2), .Y (n_77));
+  INVXL g3145(.A (n_1), .Y (n_111));
+  AND2X2 g3146__5122(.A (y[0]), .B (x[0]), .Y (z[0]));
+  NAND2XL g3154__8246(.A (y[6]), .B (x[3]), .Y (n_100));
+  NAND2XL g3163__7098(.A (y[5]), .B (x[1]), .Y (n_62));
+  NAND2XL g3149__6131(.A (y[7]), .B (x[3]), .Y (n_133));
+  NAND2XL g3167__1881(.A (y[2]), .B (x[6]), .Y (n_5));
+  NAND2XL g3166__5115(.A (y[7]), .B (x[4]), .Y (n_131));
+  NAND2XL g3114__7482(.A (y[3]), .B (x[3]), .Y (n_20));
+  NAND2XL g3137__4733(.A (y[7]), .B (x[6]), .Y (n_11));
+  NAND2XL g3147__6161(.A (y[0]), .B (x[1]), .Y (n_2));
+  NAND2XL g3157__9315(.A (y[3]), .B (x[2]), .Y (n_25));
+  NAND2XL g3138__9945(.A (y[7]), .B (x[2]), .Y (n_129));
+  NAND2XL g3143__2883(.A (y[4]), .B (x[4]), .Y (n_13));
+  NAND2XL g3160__2346(.A (y[3]), .B (x[7]), .Y (n_22));
+  NAND2XL g3155__1666(.A (y[3]), .B (x[4]), .Y (n_16));
+  NAND2XL g3173__7410(.A (y[1]), .B (x[5]), .Y (n_30));
+  NAND2XL g3119__6417(.A (y[6]), .B (x[5]), .Y (n_98));
+  NAND2XL g3141__5477(.A (y[6]), .B (x[4]), .Y (n_106));
+  NAND2XL g3172__2398(.A (y[0]), .B (x[5]), .Y (n_14));
+  NAND2XL g3171__5107(.A (y[7]), .B (x[1]), .Y (n_128));
+  NAND2XL g3156__6260(.A (y[3]), .B (x[1]), .Y (n_8));
+  NAND2XL g3126__4319(.A (y[3]), .B (x[6]), .Y (n_18));
+  NAND2XL g3175__8428(.A (y[1]), .B (x[7]), .Y (n_4));
+  NAND2XL g3148__5526(.A (y[1]), .B (x[0]), .Y (n_3));
+  NAND2XL g3161__6783(.A (y[1]), .B (x[6]), .Y (n_32));
+  NAND2XL g3117__3680(.A (y[6]), .B (x[2]), .Y (n_104));
+  NAND2XL g3162__1617(.A (y[7]), .B (x[0]), .Y (n_126));
+  NAND2XL g3159__2802(.A (y[5]), .B (x[5]), .Y (n_58));
+  NAND2XL g3150__1705(.A (y[5]), .B (x[6]), .Y (n_7));
+  NAND2XL g3174__5122(.A (y[0]), .B (x[2]), .Y (n_36));
+  NAND2XL g3134__8246(.A (y[6]), .B (x[1]), .Y (n_102));
+  NAND2XL g3133__7098(.A (y[4]), .B (x[5]), .Y (n_19));
+  NAND2XL g3123__6131(.A (y[4]), .B (x[6]), .Y (n_23));
+  NAND2XL g3170__1881(.A (y[0]), .B (x[4]), .Y (n_27));
+  NAND2XL g3165__5115(.A (y[0]), .B (x[3]), .Y (n_33));
+  NAND2XL g3152__7482(.A (y[1]), .B (x[4]), .Y (n_15));
+  NAND2XL g3164__4733(.A (y[5]), .B (x[3]), .Y (n_48));
+  NAND2XL g3136__6161(.A (y[2]), .B (x[3]), .Y (n_70));
+  NAND2XL g3128__9315(.A (y[6]), .B (x[6]), .Y (n_67));
+  NAND2XL g3132__9945(.A (y[4]), .B (x[3]), .Y (n_17));
+  NAND2XL g3130__2883(.A (y[2]), .B (x[4]), .Y (n_64));
+  NAND2XL g3144__2346(.A (y[5]), .B (x[0]), .Y (n_52));
+  NAND2XL g3120__1666(.A (y[1]), .B (x[1]), .Y (n_37));
+  NAND2XL g3116__7410(.A (y[2]), .B (x[5]), .Y (n_50));
+  NAND2XL g3139__6417(.A (y[4]), .B (x[0]), .Y (n_9));
+  NAND2XL g3121__5477(.A (y[4]), .B (x[1]), .Y (n_26));
+  NAND2XL g3176__2398(.A (y[7]), .B (x[5]), .Y (n_82));
+  NAND2XL g3153__5107(.A (y[4]), .B (x[2]), .Y (n_21));
+  NAND2XL g3118__6260(.A (y[1]), .B (x[2]), .Y (n_34));
+  NAND2XL g3131__4319(.A (y[5]), .B (x[2]), .Y (n_66));
+  NAND2XL g3135__8428(.A (y[2]), .B (x[0]), .Y (n_46));
+  NAND2XL g3168__5526(.A (y[2]), .B (x[1]), .Y (n_60));
+  NAND2XL g3158__6783(.A (y[0]), .B (x[7]), .Y (n_31));
+  NAND2XL g3129__3680(.A (y[0]), .B (x[6]), .Y (n_29));
+  NAND2XL g3124__1617(.A (y[2]), .B (x[2]), .Y (n_56));
+  NAND2XL g3140__2802(.A (y[4]), .B (x[7]), .Y (n_6));
+  NAND2XL g3127__1705(.A (y[5]), .B (x[4]), .Y (n_54));
+  NAND2XL g3169__5122(.A (y[3]), .B (x[0]), .Y (n_1));
+  NAND2XL g3151__8246(.A (y[3]), .B (x[5]), .Y (n_12));
+  NAND2XL g3142__7098(.A (y[1]), .B (x[3]), .Y (n_28));
+  NAND2XL g3115__6131(.A (y[6]), .B (x[7]), .Y (n_10));
+  NAND2XL g3122__1881(.A (y[6]), .B (x[0]), .Y (n_79));
+  NAND2XL g3125__5115(.A (y[5]), .B (x[7]), .Y (n_109));
+endmodule
+
+@file(exic1.tcl) 32: 			report_area >> $z-$y-$x.area.txt
+@file(exic1.tcl) 33: 			report_power >> $z-$y-$x.power.txt
+Info    : Joules engine is used. [RPT-16]
+        : Joules engine is being used for the command report_power.
+Info   : ACTP-0001 [ACTPInfo] Activity propagation started for stim#0 netlist
+       : WA_8
+Info   : ACTP-0009 [ACTPInfo] Activity Propagation Progress Report :   0%   1%   2%   3%   4%   5%   6%   7%   8%   9%  10%  11%  12%  13%  14%  15%  16%  17%  18%  19%  20%  21%  22%  23%  24%  25%  26%  27%  28%  29%  30%  31%  32%  33%  34%  35%  36%  37%  38%  39%  40%  41%  42%  43%  44%  45%  46%  47%  48%  49%  50%  51%  52%  53%  54%  55%  56%  57%  58%  59%  60%  61%  62%  63%  64%  65%  66%  67%  68%  69%  70%  71%  72%  73%  74%  75%  76%  77%  78%  79%  80%  81%  82%  83%  84%  85%  86%  87%  88%  89%  90%  91%  92%  93%  94%  95%  96%  97%  98%  99% 100%
+Info   : ACTP-0001 Activity propagation ended for stim#0
+Info   : PWRA-0001 [PwrInfo] compute_power effective options 
+       : -mode : vectorless
+       : -skip_propagation : 1
+       : -frequency_scaling_factor : 1.0
+       : -use_clock_freq : stim
+       : -stim :/stim#0
+       : -fromGenus : 1
+Info   : ACTP-0001 Timing initialization started
+Info   : ACTP-0001 Timing initialization ended
+Info   : PWRA-0002 [PwrInfo] Skipping activity propagation due to -skip_ap
+       : option....
+Warning: PWRA-0302 [PwrWarn] Frequency scaling is not applicable for vectorless
+       : flow. Ignoring frequency scaling.
+Warning: PWRA-0304 [PwrWarn] -stim option is not applicable with vectorless mode
+       : of power analysis, ignored this option.
+Info   : PWRA-0002 Started 'vectorless' power computation.
+Info   : PWRA-0009 [PwrInfo] Power Computation Progress Report :   0%   1%   2%   3%   4%   5%   6%   7%   8%   9%  10%  11%  12%  13%  14%  15%  16%  17%  18%  19%  20%  21%  22%  23%  24%  25%  26%  27%  28%  29%  30%  31%  32%  33%  34%  35%  36%  37%  38%  39%  40%  41%  42%  43%  44%  45%  46%  47%  48%  49%  50%  51%  52%  53%  54%  55%  56%  57%  58%  59%  60%  61%  62%  63%  64%  65%  66%  67%  68%  69%  70%  71%  72%  73%  74%  75%  76%  77%  78%  79%  80%  81%  82%  83%  84%  85%  86%  87%  88%  89%  90%  91%  92%  93%  94%  95%  96%  97%  98%  99% 100%
+Info   : PWRA-0002 Finished power computation.
+Info   : PWRA-0007 [PwrInfo] Completed successfully.
+       : Info=6, Warn=2, Error=0, Fatal=0
+Output file: WA_8-8-90nm.power.txt
+@file(exic1.tcl) 34: 			report_timing -unconstrained >> KSA_8_$y-$x.timing.txt
+@file(exic1.tcl) 36: 			write_hdl > $z-net.v
+@file(exic1.tcl) 37: 			write_sdc > $z-sdc.sdc
+Finished SDC export (command execution time mm:ss (real) = 00:00).
+@file(exic1.tcl) 39:                         gui_show
+#@ End verbose source ./exic1.tcl
+
+Lic Summary:
+[10:25:31.054936] Cdslmd servers: cadence_server
+[10:25:31.054937] Feature usage summary:
+[10:25:31.054938] Genus_Synthesis
+
+Normal exit.
