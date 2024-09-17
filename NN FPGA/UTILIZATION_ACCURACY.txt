@@ -2,9 +2,9 @@ Sigmoid 10
 
 Resource	Used	Available	Utilisation%
 LUT			9211	53200		17.31391
-FF			4817	106400		4.5272555
+FF			4817	106400	4.5272555
 BRAM		35		140			25.0
 IO			97		200			48.5
-BUFG		1		32			3.125
+BUFG		1		  32			3.125
 
 Accuracy	89.000000
