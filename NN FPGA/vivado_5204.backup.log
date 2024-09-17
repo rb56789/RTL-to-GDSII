@@ -1,0 +1,51 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Tue Sep 17 14:28:58 2024
+# Process ID: 5204
+# Current directory: C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA
+# Command line: vivado.exe -mode tcl -source C:\Users\VLSI_15\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\zynet\db/makeIP.tcl -tclargs myProject1/myProject1.xpr
+# Log file: C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/vivado.log
+# Journal file: C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA\vivado.jou
+# Running On: vlsilab15-nitdelhi-ac-in, OS: Windows, CPU Frequency: 2112 MHz, CPU Physical cores: 12, Host memory: 16833 MB
+#-----------------------------------------------------------
+source {C:\Users\VLSI_15\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\zynet\db/makeIP.tcl}
+# open_project [lindex $argv 0]
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/myProject1/myProject1.gen/sources_1'.
+WARNING: [filemgmt 56-3] IPUserFilesDir: Could not find the directory 'C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/myProject1/p_user_files'.
+Scanning sources...
+Finished scanning sources
+# ipx::package_project -root_dir ./src/fpga -vendor VIP -library user -taxonomy /UserIP
+INFO: [IP_Flow 19-1842] HDL Parser: Found include file "rtl/include.v" from the top-level HDL file.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi_aresetn' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi_aclk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'intr' of definition 'xilinx.com:signal:interrupt:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 's_axi_aresetn': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'intr': Added interface parameter 'SENSITIVITY' with value 'LEVEL_HIGH'.
+INFO: [IP_Flow 19-4728] Bus Interface 's_axi_aclk': Added interface parameter 'ASSOCIATED_BUSIF' with value 's_axi'.
+INFO: [IP_Flow 19-4728] Bus Interface 's_axi_aclk': Added interface parameter 'ASSOCIATED_RESET' with value 's_axi_aresetn'.
+INFO: [IP_Flow 19-2181] Payment Required is not set for this core.
+INFO: [IP_Flow 19-2187] The Product Guide file is missing.
+# ipx::add_bus_interface axis_data [ipx::current_core]
+# set_property abstraction_type_vlnv xilinx.com:interface:axis_rtl:1.0 [ipx::get_bus_interfaces axis_data -of_objects [ipx::current_core]]
+# set_property bus_type_vlnv xilinx.com:interface:axis:1.0 [ipx::get_bus_interfaces axis_data -of_objects [ipx::current_core]]
+# ipx::add_port_map TVALID [ipx::get_bus_interfaces axis_data -of_objects [ipx::current_core]]
+# set_property physical_name axis_in_data_valid [ipx::get_port_maps TVALID -of_objects [ipx::get_bus_interfaces axis_data -of_objects [ipx::current_core]]]
+# ipx::add_port_map TREADY [ipx::get_bus_interfaces axis_data -of_objects [ipx::current_core]]
+# set_property physical_name axis_in_data_ready [ipx::get_port_maps TREADY -of_objects [ipx::get_bus_interfaces axis_data -of_objects [ipx::current_core]]]
+# ipx::add_port_map TDATA [ipx::get_bus_interfaces axis_data -of_objects [ipx::current_core]]
+# set_property physical_name axis_in_data [ipx::get_port_maps TDATA -of_objects [ipx::get_bus_interfaces axis_data -of_objects [ipx::current_core]]]
+# set_property core_revision 1 [ipx::current_core]
+# set_property value s_axi:axis_data [ipx::get_bus_parameters ASSOCIATED_BUSIF -of_objects [ipx::get_bus_interfaces s_axi_aclk -of_objects [ipx::current_core]]]
+# ipx::create_xgui_files [ipx::current_core]
+# ipx::update_checksums [ipx::current_core]
+# ipx::save_core [ipx::current_core]
+# update_ip_catalog
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+# exit
+INFO: [Common 17-206] Exiting Vivado at Tue Sep 17 14:29:07 2024...

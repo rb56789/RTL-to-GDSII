@@ -1,0 +1,18 @@
+0.7
+2020.2
+Oct 14 2022
+05:20:55
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/myProject1/myProject1.sim/sim_1/behav/xsim/glbl.v,1665704903,verilog,,,,glbl,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/Layer_1.v,1726563723,verilog,,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/Layer_2.v,,Layer_1,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/Layer_2.v,1726563516,verilog,,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/Layer_3.v,,Layer_2,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/Layer_3.v,1726563516,verilog,,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/Layer_4.v,,Layer_3,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/Layer_4.v,1726563516,verilog,,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/Sig_ROM.v,,Layer_4,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/Sig_ROM.v,1726563516,verilog,,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/Weight_Memory.v,,Sig_ROM,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/Weight_Memory.v,1726563516,verilog,,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/axi_lite_wrapper.v,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/include.v,Weight_Memory,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/axi_lite_wrapper.v,1726563516,verilog,,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/maxFinder.v,,axi_lite_wrapper,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/include.v,1726563516,verilog,,,,,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/maxFinder.v,1726563516,verilog,,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/neuron.v,,maxFinder,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/neuron.v,1726563516,verilog,,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/relu.v,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/include.v,neuron,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/relu.v,1726563516,verilog,,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/zynet.v,,ReLU,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/zynet.v,1726563516,verilog,,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/tb/top_sim.v,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/include.v,zyNet,,,,,,,,
+C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/tb/top_sim.v,1726563516,verilog,,,C:/Users/VLSI_15/Desktop/RB/neuralNetwork-master/neuralNetwork-master/NN FPGA/src/fpga/rtl/include.v,top_sim,,,,,,,,
